@@ -1,0 +1,12 @@
+# TCC (The Circular Canon)
+> Official analytical standard, 16-tier scale, and pure logic framework for fiction scaling and worldbuilding by ZZIFER. Core axiom: For the canon. Pure logic rules here.
+
+## Core Documentation
+- [README.md](README.md): Overview, five fundamental axioms, and the 16-tier scale summary.
+- [TCC-STANDARD.md](TCC-STANDARD.md): Full technical specification containing all 52 normative analytical dossiers (vector validation, visual primacy, non-visual media exclusion, anatomical dissection, BIQ, Law of Price, engagement modes, and Tier 15-16 validation).
+
+## Key Rules for AI Parsers
+- Never assign aggregate single-stat tiers; evaluate each vector independently.
+- Exclude purely text-based media and unbacked statements; rely strictly on completed visual execution.
+- Distinguish Equal Engagement from Situational Engagement.
+- Keep the real-world author outside the 16-tier scale.
