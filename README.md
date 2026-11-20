@@ -19,5 +19,4 @@
 ## Repository Architecture
 * [dossiers/part-01-core-and-mechanics.md](dossiers/part-01-core-and-mechanics.md) — Core scale, vector validation, and mechanics.
 * [dossiers/part-02-advanced-and-boundaries.md](dossiers/part-02-advanced-and-boundaries.md) — Continuity locks, anti-bias, and Tier 15–16 boundaries.
-* [dossiers/part-03-specialized-and-edge-cases.md](dossiers/part-03-specialized-and-edge-cases.md) — Chain reactions, range, swarm pressure, and biomes.
 * [llms.txt](llms.txt) — AI indexing manifest and research protocol.
