@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCC — The Circular Canon | Analytical Framework</title>
+  <script src="https://jsdelivr.net"></script>
+  <style>
+    :root {
+      --bg: #08090c;
+      --panel: #0f1218;
+      --border: #1e2430;
+      --text: #d8dee9;
+      --muted: #7c879b;
+      --cyan: #38bdf8;
+      --white: #f8fafc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    /* Лёгкий эффект аналоговой сетки / VHS */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.015) 0px,
+        rgba(255,255,255,0.015) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+      pointer-events: none;
+      z-index: 999;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #0d1017 0%, var(--bg) 100%);
+      padding: 48px 24px 36px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    h1.hero-title {
+      font-size: clamp(28px, 5vw, 44px);
+      color: var(--white);
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 24px;
+      font-size: 15px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    input#search {
+      flex: 1;
+      min-width: 240px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+    input#search:focus { border-color: var(--cyan); }
+    .btn {
+      background: var(--panel);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .btn:hover { background: rgba(56, 189, 248, 0.12); }
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      max-width: 1280px;
+      margin: 32px auto;
+      padding: 0 24px 80px;
+    }
+    aside {
+      position: sticky;
+      top: 24px;
+      height: calc(100vh - 48px);
+      overflow-y: auto;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    aside h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    #toc a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+      transition: 0.15s;
+    }
+    #toc a:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--cyan);
+    }
+    main {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: clamp(20px, 4vw, 44px);
+    }
+    main h1 {
+      color: var(--white);
+      font-size: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin: 36px 0 16px;
+    }
+    main h1:first-child { margin-top: 0; }
+    main h2 {
+      color: var(--cyan);
+      font-size: 18px;
+      margin: 24px 0 12px;
+    }
+    main h3 {
+      color: var(--white);
+      font-size: 16px;
+      margin: 18px 0 8px;
+    }
+    main p { margin-bottom: 14px; }
+    main ul, main ol { margin: 0 0 16px 22px; }
+    main li { margin-bottom: 8px; }
+    main strong { color: var(--white); }
+    main em { color: #a5b4fc; }
+    .hidden-section { display: none; }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; height: auto; max-height: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="badge">Author: ZZIFER • Pure Logic Rules Here</div>
+    <h1 class="hero-title">TCC — The Circular Canon</h1>
+    <p class="subtitle">
+      Unified Analytical Framework, 16-Tier Scale &amp; Tier 16-C Verification Standard.
+    </p>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Search rules, Tier 16-C, Law of Price, BIQ..." />
+      <a class="btn" href="https://github.com" target="_blank">Raw Markdown</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <h3>Dossier Index</h3>
+      <div id="toc">Loading index...</div>
+    </aside>
+    <main id="content">Loading TCC Standard Dossier...</main>
+  </div>
+
+  <script>
+    async function loadDossier() {
+      const res = await fetch('dossiers/part-01-core-and-mechanics.md');
+      const md = await res.text();
+      const content = document.getElementById('content');
+      content.innerHTML = marked.parse(md);
+
+      const toc = document.getElementById('toc');
+      toc.innerHTML = '';
+      const headings = content.querySelectorAll('h1');
+      headings.forEach((h, i) => {
+        const id = 'sec-' + i;
+        h.id = id;
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
+        toc.appendChild(a);
+      });
+    }
+
+    document.getElementById('search').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      const blocks = document.querySelectorAll('#content > *');
+      blocks.forEach(el => {
+        if (!q) {
+          el.classList.remove('hidden-section');
+        } else {
+          el.classList.toggle('hidden-section', !el.textContent.toLowerCase().includes(q));
+        }
+      });
+    });
+
+    loadDossier();
+  </script>
+</body>
+</html>
