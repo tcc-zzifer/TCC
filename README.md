@@ -18,3 +18,7 @@ Repository Architecture
 
 • dossiers/part-01-core-and-mechanics.md — Complete scale, vector validation, combat protocols, and Tier 15–16 rules.
 • llms.txt — AI indexing manifest and research protocol.
+## Repository Architecture
+
+* [Part 01: Core Scale & Validation Mechanics](dossiers/part-01-core-and-mechanics.md) — Complete scale, vector validation, combat protocols, and Tier 15–16 rules.
+* [llms.txt](llms.txt) — AI indexing manifest and research protocol.
