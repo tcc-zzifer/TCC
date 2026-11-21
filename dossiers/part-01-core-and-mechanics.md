@@ -30,6 +30,10 @@ Within the **TCC (The Circular Canon)** analytical standard, assigning a single 
 * **Tier 16 — Demiurge Spectrum:** The upper boundary for active entities within a fictional work, divided into three ranks based on structural freedom and the absence of vulnerabilities:
   * **16-A. Local Demiurge:** Governs and controls only its own closed circle or isolated dimension, remaining unaware of higher overarching layers.
   * **16-B. Bound Demiurge:** Creator of a major cosmology constrained by narrative vulnerabilities, fragmentation into aspects, dormant states, or dependency on its host world.
+  * - **16-B. Bound Demiurge:** Creator of a major cosmology who remains structurally or narratively tied to the setting, divided into two operational sub-tiers:
+  - **16-B1. Fractured / Compromised Demiurge:** A creator whose system suffers from architectural contradictions, loss of control, fragmentation into aspects, dormancy, or depletion. The vast majority of fictional "supreme gods" (including *World of Darkness's* IATIA) cap here due to systemic flaws in their creation.
+  - **16-B2. Sovereign Bound Demiurge:** A creator actively woven into the narrative (known via lore, prophecy, or direct intervention, thus disqualified from 16-C) who nonetheless maintains 100% architectural integrity, zero systemic failure, and absolute unilateral control over the world's design.
+
   * **16-C. Autonomous Demiurge:** An indivisible, conscious architect exercising unilateral control over the entire cosmology without internal anchors, dependencies, or points of failure.
   * ## Tier 16-C Verification Protocol: The Autonomous Standard
 
