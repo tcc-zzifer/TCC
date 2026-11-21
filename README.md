@@ -1,4 +1,4 @@
-#TCC (The Circular Canon) — Analytical Framework
+# TCC (The Circular Canon) — Analytical Framework
 
 Author: ZZIFER | Axiom: Pure logic rules here.
 
