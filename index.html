@@ -18,126 +18,116 @@ header{border-bottom:2px solid var(--border);background:radial-gradient(circle a
 .b-cyn{color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.4)}
 .logo{font-family:'TF2Build','Impact',sans-serif;font-size:clamp(40px,8vw,74px);letter-spacing:3px;line-height:1.05;margin-bottom:6px}
 .sub{font-family:'TF2Secondary',sans-serif;font-size:clamp(15px,2.4vw,21px);color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
-.desc{color:var(--muted);max-width:740px;margin:0 auto 20px;font-size:14px}
-.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px}
-.tab{font-family:'TF2Build','Impact',sans-serif;background:var(--panel-alt);color:var(--muted);border:2px solid var(--border);padding:10px 22px;border-radius:6px;font-size:15px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
-.tab.active,.tab:hover{color:var(--amber);border-color:var(--orange);background:rgba(224,122,44,.16)}
-.bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:820px;margin:0 auto}
-input{flex:1;min-width:230px;background:var(--panel);border:1px solid var(--border);color:var(--white);padding:10px 14px;border-radius:6px;font-size:14px;outline:none}
-input:focus{border-color:var(--orange)}
-.btn{font-family:'TF2Secondary',sans-serif;background:var(--panel-alt);color:var(--white);border:1px solid var(--border);padding:10px 15px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
-.btn-o{border-color:rgba(224,122,44,.65);color:var(--amber)}
-.btn:hover{border-color:var(--orange);background:rgba(224,122,44,.16)}
-.wrap{display:grid;grid-template-columns:290px 1fr;gap:24px;max-width:1340px;margin:24px auto;padding:0 20px 70px}
-aside{position:sticky;top:16px;height:calc(100vh - 32px);overflow-y:auto;background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:8px;padding:14px}
+.desc{color:var(--muted);max-width:740px;margin:0 auto 22px;font-size:14px}
+.nav-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:900px;margin:0 auto}
+.btn{font-family:'TF2Secondary',sans-serif;display:inline-block;background:var(--panel-alt);color:var(--white);border:2px solid var(--border);padding:11px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:.15s}
+.btn-o{border-color:var(--orange);color:var(--amber);background:rgba(224,122,44,.14)}
+.btn-c{border-color:rgba(56,189,248,.55);color:var(--cyan)}
+.btn:hover{border-color:var(--orange);background:rgba(224,122,44,.22);color:var(--white)}
+.wrap{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1320px;margin:26px auto;padding:0 20px 70px}
+aside{position:sticky;top:16px;height:fit-content;background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:8px;padding:16px}
 aside h3{font-family:'TF2Secondary',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1.4px;color:var(--amber);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-#toc a{font-family:'TF2Secondary',sans-serif;display:block;color:var(--text);text-decoration:none;font-size:14px;padding:6px 8px;border-radius:4px;margin-bottom:3px;border-left:3px solid transparent;cursor:pointer}
-#toc a:hover,#toc a.act{background:rgba(224,122,44,.14);border-left-color:var(--orange);color:var(--white)}
-main{background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--cyan);border-radius:8px;padding:clamp(18px,4vw,40px)}
-main h1{font-family:'TF2Build','Impact',sans-serif;color:var(--white);font-size:23px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:8px;margin:32px 0 14px}
-main h1:first-child{margin-top:0}
-main h2{font-family:'TF2Secondary',sans-serif;color:var(--amber);font-size:19px;margin:22px 0 10px}
-main h3{font-family:'TF2Secondary',sans-serif;color:var(--cyan);font-size:17px;margin:16px 0 8px}
-main p{margin-bottom:12px}
-main ul{margin:0 0 14px 22px}
-main li{margin-bottom:6px}
-main strong{color:var(--white)}
-main em{color:#93c5fd}
-.hide{display:none}
-@media(max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static;height:auto;max-height:240px}}
+aside a{font-family:'TF2Secondary',sans-serif;display:block;color:var(--text);text-decoration:none;font-size:14px;padding:7px 9px;border-radius:4px;margin-bottom:4px;border-left:3px solid transparent}
+aside a:hover{background:rgba(224,122,44,.14);border-left-color:var(--orange);color:var(--white)}
+main{display:flex;flex-direction:column;gap:24px}
+.card{background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--cyan);border-radius:8px;padding:clamp(20px,4vw,36px)}
+.card.orange-top{border-top-color:var(--orange)}
+.card h1{font-family:'TF2Build','Impact',sans-serif;color:var(--white);font-size:24px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:16px}
+.card h2{font-family:'TF2Secondary',sans-serif;color:var(--amber);font-size:19px;margin:20px 0 10px}
+.card h3{font-family:'TF2Secondary',sans-serif;color:var(--cyan);font-size:16px;margin:16px 0 6px}
+.card p{margin-bottom:12px}
+.card ul{margin:0 0 14px 22px}
+.card li{margin-bottom:7px}
+.card strong{color:var(--white)}
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:14px}
+.tier-box{background:var(--panel-alt);border:1px solid var(--border);border-left:3px solid var(--orange);padding:12px 14px;border-radius:6px}
+.tier-box strong{color:var(--amber);display:block;margin-bottom:4px}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static}}
 </style>
 </head>
 <body>
 <div class="hazard"></div>
 <header>
   <div class="badges">
-    <span class="badge b-org">Source & TF2 Community Analytical Standard</span>
+    <span class="badge b-org">Source &amp; TF2 Community Analytical Standard</span>
     <span class="badge b-cyn">Author: ZZIFER • Pure Logic Rules Here</span>
   </div>
   <div class="logo"><span style="color:#f8fafc">TCC</span> <span style="color:#38bdf8">//</span> <span style="color:#e07a2c">MANNKO</span></div>
-  <div class="sub">The Circular Canon & Tactical Combat Division</div>
-  <p class="desc">Independent Tactical Combat & Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.</p>
-  <div class="tabs">
-    <button class="tab active" id="t1" onclick="setMode(1)">01 // Core Protocols</button>
-    <button class="tab" id="t2" onclick="setMode(2)">02 // Source Character Roster</button>
-  </div>
-  <div class="bar">
-    <input type="text" id="q" placeholder="Search protocols, characters, Street Tiers (2-6), BIQ, Tier 16...">
-    <a class="btn btn-o" href="https://github.com" target="_blank">Core Dossier Raw</a>
-    <a class="btn" href="https://github.com" target="_blank">Characters Folder</a>
+  <div class="sub">The Circular Canon &amp; Tactical Combat Division</div>
+  <p class="desc">Independent Tactical Combat &amp; Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.</p>
+  <div class="nav-row">
+    <a class="btn btn-o" href="#protocols">01 // Core Protocols</a>
+    <a class="btn btn-c" href="#roster">02 // Source Character Roster</a>
+    <a class="btn" href="https://github.com" target="_blank" rel="noopener">Full 40+ Rules Dossier</a>
+    <a class="btn" href="https://github.com" target="_blank" rel="noopener">Characters Archive</a>
   </div>
 </header>
+
 <div class="wrap">
-  <aside><h3 id="st">// Tactical Protocol Index</h3><div id="toc"></div></aside>
-  <main id="out"><p style="color:#f59e0b">Initializing terminal...</p></main>
+  <aside>
+    <h3>// Terminal Navigation</h3>
+    <a href="#protocols">01. Core Standard &amp; Rules</a>
+    <a href="#scale">02. 16-Tier Scale &amp; Tier 16-C</a>
+    <a href="#roster">03. Source Character Roster</a>
+    <a href="#saxton">04. Dossier: Saxton Hale</a>
+    <a href="https://github.com" target="_blank" rel="noopener">05. GitHub Repository</a>
+  </aside>
+
+  <main>
+    <section class="card" id="protocols">
+      <h1>01 // Core Analytical Standard</h1>
+      <p><strong>TCC (The Circular Canon)</strong> is an independent tactical combat and cosmology framework built specifically for the <strong>Team Fortress 2 and Source Engine community</strong>. External scaling wikis (VSBW, CSAP) and "Boundless / Tier 0" paradoxes are strictly banned.</p>
+      <ul>
+        <li><strong>Visual Primacy &amp; Gameplay Segregation:</strong> Feats are verified strictly through official visual media (Valve comics, <em>Meet the Team</em> shorts, scripted cutscenes, and canonical SFM works), separating narrative reality from in-game UI (HP bars, respawns, cooldowns).</li>
+        <li><strong>Mandatory Vector Tagging:</strong> Striking Force, Combat Speed, Reaction Speed, Travel Velocity, and 4-layer Durability are calibrated independently—never merged into one inflated rank.</li>
+        <li><strong>Law of Price &amp; Latency:</strong> Every ability incurs stamina drain, structural recoil, activation wind-up, or recovery windows.</li>
+        <li><strong>Supremacy of Battle Intelligence (BIQ):</strong> Tactical positioning, blind spots, psychology, and environmental traps decide street-level and mid-tier Source engagements.</li>
+      </ul>
+      <p><a class="btn btn-o" href="https://github.com" target="_blank" rel="noopener">Open Complete 40+ Dossier Document on GitHub →</a></p>
+    </section>
+
+    <section class="card orange-top" id="scale">
+      <h1>02 // The 16-Tier Scale &amp; Tier 16-C Mandate</h1>
+      <div class="tier-grid">
+        <div class="tier-box"><strong>Tiers 1–6 (Local &amp; Street)</strong>Sub-Biological (1), Baseline Human (2), Peak Human &amp; Tactical (3), Building (4), District (5), Metropolis (6).</div>
+        <div class="tier-box"><strong>Tiers 7–12 (Cosmic)</strong>Mountain/Island (7), Continental (8), Planetary (9), Stellar (10), Solar System (11), Galactic &amp; Cluster (12).</div>
+        <div class="tier-box"><strong>Tiers 13–15 (Macro &amp; Dimensional)</strong>Universal (13), Multiversal (14), Dimensional 15-A (4D–5D) &amp; 15-B (6D+).</div>
+        <div class="tier-box"><strong>Tier 16 (Demiurge Spectrum)</strong>16-A Local Demiurge • 16-B1 Fractured Creator • 16-B2 Sovereign Bound Creator • 16-C Autonomous Architect (Zero-Defect Mandate).</div>
+      </div>
+    </section>
+
+    <section class="card" id="roster">
+      <h1>03 // Source &amp; TF2 Character Roster</h1>
+      <p>Verified tactical profiles for official Valve characters and canonical SFM fan-verse entities. All full Markdown files are stored in the repository's <strong>characters/</strong> directory:</p>
+      <ul>
+        <li><a style="color:#f59e0b;font-weight:700" href="https://github.com/blob/main/characters/saxton-hale.md" target="_blank" rel="noopener">Saxton Hale (Valve Comics / Jungle Inferno Canon)</a> — Tier 3+ / Low Tier 4 Melee Apex.</li>
+        <li><a style="color:#38bdf8" href="https://github.com" target="_blank" rel="noopener">Browse All Character Dossiers in characters/ →</a></li>
+      </ul>
+    </section>
+
+    <section class="card orange-top" id="saxton">
+      <h1>04 // Featured Dossier: Saxton Hale</h1>
+      <h2>1. Continuity &amp; Visual Lock</h2>
+      <ul>
+        <li><strong>Source Material:</strong> Official Valve TF2 Comics &amp; <em>Jungle Inferno</em> SFM Short.</li>
+        <li><strong>Excluded Material:</strong> <em>Versus Saxton Hale</em> gameplay mode (HP pools, rage meters, and cooldowns are non-canonical UI).</li>
+      </ul>
+      <h2>2. Vector Classification</h2>
+      <ul>
+        <li><strong>Striking Force:</strong> Tier 3+ / Low Tier 4 (Vaporized the last living Yeti in a single bare-handed strike; effortlessly shatters reinforced steel doors and thick concrete).</li>
+      <h2>2. Vector Classification</h2>
+      <ul>
+        <li><strong>Striking Force:</strong> Tier 3+ / Low Tier 4 (Vaporized the last living Yeti in a single bare-handed strike; effortlessly shatters reinforced steel doors and thick concrete).</li>
+        <li><strong>Combat &amp; Reaction Speed:</strong> Tier 3 (Peak Human &amp; Tactical — extreme close-quarters burst speed and grappling agility).</li>
+        <li><strong>Durability (4-Layer Audit):</strong> Tier 3+ / Low Tier 4 external &amp; internal resilience (tanks direct explosives, gunfire, and massive terminal-velocity drops without injury).</li>
+      </ul>
+      <h2>3. Law of Price &amp; Psychological Limiters</h2>
+      <ul>
+        <li><strong>Range Limitation:</strong> Strictly melee-dependent; lacks ranged weaponry or flight.</li>
+        <li><strong>Canonical Moral Limiter:</strong> Absolute refusal to strike children (proven against Olivia Mann), creating a decisive tactical exploit in <em>Situational Engagement</em>.</li>
+      </ul>
+    </section>
+  </main>
 </div>
-<script>
-const out=document.getElementById('out'),toc=document.getElementById('toc'),st=document.getElementById('st');
-function mdToHtml(md){
-  const lines=md.split(/\r?\n/);let h='',ul=false;
-  const f=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
-  for(let r of lines){
-    const l=r.trim();
-    if(!l){if(ul){h+='</ul>';ul=false;}continue;}
-    if(l.startsWith('# ')){if(ul){h+='</ul>';ul=false;}h+='<h1>'+f(l.slice(2))+'</h1>';}
-    else if(l.startsWith('## ')){if(ul){h+='</ul>';ul=false;}h+='<h2>'+f(l.slice(3))+'</h2>';}
-    else if(l.startsWith('### ')){if(ul){h+='</ul>';ul=false;}h+='<h3>'+f(l.slice(4))+'</h3>';}
-    else if(l.startsWith('- ')||l.startsWith('* ')||l.startsWith('• ')){if(!ul){h+='<ul>';ul=true;}h+='<li>'+f(l.slice(2))+'</li>';}
-    else{if(ul){h+='</ul>';ul=false;}h+='<p>'+f(l)+'</p>';}
-  }
-  if(ul)h+='</ul>';return h;
-}
-async function getTxt(urls){
-  for(const u of urls){try{const r=await fetch(u);if(r.ok){const t=await r.text();if(t.length>10)return t;}}catch(e){}}
-  return '';
-}
-async function openCore(){
-  st.textContent='// Tactical Protocol Index';
-  out.innerHTML='<p style="color:#f59e0b">Loading Core Protocols...</p>';
-  const md=await getTxt(['dossiers/part-01-core-and-mechanics.md?t='+Date.now(),'https://githubusercontent.com']);
-  if(!md){out.innerHTML='<p style="color:#f87171">Error loading dossiers/part-01-core-and-mechanics.md</p>';return;}
-  out.innerHTML=mdToHtml(md);toc.innerHTML='';
-  out.querySelectorAll('h1').forEach((el,i)=>{
-    el.id='s'+i;const a=document.createElement('a');a.href='#s'+i;
-    a.textContent=el.textContent.replace('TCC Standard Dossier: ','').replace('TCC Standard Protocol: ','');
-    toc.appendChild(a);
-  });
-}
-async function openChar(file,el){
-  toc.querySelectorAll('a').forEach(x=>x.classList.remove('act'));
-  if(el)el.classList.add('act');
-  out.innerHTML='<p style="color:#f59e0b">Loading '+file+'...</p>';
-  const md=await getTxt(['characters/'+file+'?t='+Date.now(),'https://githubusercontent.com]);
-  out.innerHTML=md?mdToHtml(md):'<p style="color:#f87171">Error loading '+file+'</p>';
-}
-async function openRoster(){
-  st.textContent='// Source Character Roster';
-  toc.innerHTML='<p style="color:#8a94a6;font-size:13px">Scanning roster...</p>';
-  let files=['saxton-hale.md'];
-  try{
-    const r=await fetch('https://github.com');
-    if(r.ok){const d=await r.json();const m=d.filter(x=>x.name&&x.name.endsWith('.md')).map(x=>x.name);if(m.length)files=m;}
-  }catch(e){}
-  toc.innerHTML='';
-  files.forEach((f,i)=>{
-    const a=document.createElement('a');
-    a.textContent='// '+f.replace('.md','').replace(/-/g,' ').toUpperCase();
-    a.onclick=()=>openChar(f,a);
-    toc.appendChild(a);
-    if(i===0)openChar(f,a);
-  });
-}
-function setMode(m){
-  document.getElementById('q').value='';
-  document.getElementById('t1').classList.toggle('active',m===1);
-  document.getElementById('t2').classList.toggle('active',m===2);
-  if(m===1)openCore();else openRoster();
-}
-document.getElementById('q').addEventListener('input',e=>{
-  const v=e.target.value.toLowerCase().trim();
-  out.querySelectorAll(':scope > *').forEach(el=>el.classList.toggle('hide',v&&!el.textContent.toLowerCase().includes(v)));
-});
-openCore();
-</script>
 </body>
 </html>
