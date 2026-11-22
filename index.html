@@ -9,6 +9,7 @@
 @font-face{font-family:'TF2Secondary';src:url('./fonts/tf2secondary.ttf') format('truetype'),local('TF2 Secondary'),local('Trebuchet MS');font-display:swap}
 :root{--bg:#0b0c0e;--panel:#121419;--panel-alt:#181b22;--border:#272c38;--text:#d8dee9;--muted:#8a94a6;--orange:#e07a2c;--amber:#f59e0b;--cyan:#38bdf8;--white:#f8fafc}
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7}
 .hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--orange),var(--orange) 14px,#15171c 14px,#15171c 28px)}
 header{border-bottom:2px solid var(--border);background:radial-gradient(circle at top,#1b1f29 0%,var(--bg) 78%);padding:36px 20px 28px;text-align:center}
@@ -19,11 +20,11 @@ header{border-bottom:2px solid var(--border);background:radial-gradient(circle a
 .logo{font-family:'TF2Build','Impact',sans-serif;font-size:clamp(40px,8vw,74px);letter-spacing:3px;line-height:1.05;margin-bottom:6px}
 .sub{font-family:'TF2Secondary',sans-serif;font-size:clamp(15px,2.4vw,21px);color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
 .desc{color:var(--muted);max-width:740px;margin:0 auto 22px;font-size:14px}
-.nav-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:900px;margin:0 auto}
-.btn{font-family:'TF2Secondary',sans-serif;display:inline-block;background:var(--panel-alt);color:var(--white);border:2px solid var(--border);padding:11px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:.15s}
+.nav-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:800px;margin:0 auto}
+.btn{font-family:'TF2Build','Impact',sans-serif;display:inline-block;background:var(--panel-alt);color:var(--white);border:2px solid var(--border);padding:12px 24px;border-radius:6px;text-decoration:none;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;transition:.15s}
 .btn-o{border-color:var(--orange);color:var(--amber);background:rgba(224,122,44,.14)}
 .btn-c{border-color:rgba(56,189,248,.55);color:var(--cyan)}
-.btn:hover{border-color:var(--orange);background:rgba(224,122,44,.22);color:var(--white)}
+.btn:hover{border-color:var(--orange);background:rgba(224,122,44,.24);color:var(--white)}
 .wrap{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1320px;margin:26px auto;padding:0 20px 70px}
 aside{position:sticky;top:16px;height:fit-content;background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:8px;padding:16px}
 aside h3{font-family:'TF2Secondary',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1.4px;color:var(--amber);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
@@ -34,7 +35,6 @@ main{display:flex;flex-direction:column;gap:24px}
 .card.orange-top{border-top-color:var(--orange)}
 .card h1{font-family:'TF2Build','Impact',sans-serif;color:var(--white);font-size:24px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:10px;margin-bottom:16px}
 .card h2{font-family:'TF2Secondary',sans-serif;color:var(--amber);font-size:19px;margin:20px 0 10px}
-.card h3{font-family:'TF2Secondary',sans-serif;color:var(--cyan);font-size:16px;margin:16px 0 6px}
 .card p{margin-bottom:12px}
 .card ul{margin:0 0 14px 22px}
 .card li{margin-bottom:7px}
@@ -58,8 +58,6 @@ main{display:flex;flex-direction:column;gap:24px}
   <div class="nav-row">
     <a class="btn btn-o" href="#protocols">01 // Core Protocols</a>
     <a class="btn btn-c" href="#roster">02 // Source Character Roster</a>
-    <a class="btn" href="https://github.com" target="_blank" rel="noopener">Full 40+ Rules Dossier</a>
-    <a class="btn" href="https://github.com" target="_blank" rel="noopener">Characters Archive</a>
   </div>
 </header>
 
@@ -70,7 +68,6 @@ main{display:flex;flex-direction:column;gap:24px}
     <a href="#scale">02. 16-Tier Scale &amp; Tier 16-C</a>
     <a href="#roster">03. Source Character Roster</a>
     <a href="#saxton">04. Dossier: Saxton Hale</a>
-    <a href="https://github.com" target="_blank" rel="noopener">05. GitHub Repository</a>
   </aside>
 
   <main>
@@ -83,7 +80,6 @@ main{display:flex;flex-direction:column;gap:24px}
         <li><strong>Law of Price &amp; Latency:</strong> Every ability incurs stamina drain, structural recoil, activation wind-up, or recovery windows.</li>
         <li><strong>Supremacy of Battle Intelligence (BIQ):</strong> Tactical positioning, blind spots, psychology, and environmental traps decide street-level and mid-tier Source engagements.</li>
       </ul>
-      <p><a class="btn btn-o" href="https://github.com" target="_blank" rel="noopener">Open Complete 40+ Dossier Document on GitHub →</a></p>
     </section>
 
     <section class="card orange-top" id="scale">
@@ -98,23 +94,19 @@ main{display:flex;flex-direction:column;gap:24px}
 
     <section class="card" id="roster">
       <h1>03 // Source &amp; TF2 Character Roster</h1>
-      <p>Verified tactical profiles for official Valve characters and canonical SFM fan-verse entities. All full Markdown files are stored in the repository's <strong>characters/</strong> directory:</p>
+      <p>Verified tactical profiles for official Valve characters and canonical SFM fan-verse entities evaluated under TCC rules:</p>
       <ul>
-        <li><a style="color:#f59e0b;font-weight:700" href="https://github.com/blob/main/characters/saxton-hale.md" target="_blank" rel="noopener">Saxton Hale (Valve Comics / Jungle Inferno Canon)</a> — Tier 3+ / Low Tier 4 Melee Apex.</li>
-        <li><a style="color:#38bdf8" href="https://github.com" target="_blank" rel="noopener">Browse All Character Dossiers in characters/ →</a></li>
+        <li><a style="color:#f59e0b;font-weight:700;text-decoration:none" href="#saxton">01. Saxton Hale (Valve Comics / Jungle Inferno Canon)</a> — Tier 3+ / Low Tier 4 Melee Apex.</li>
       </ul>
     </section>
 
     <section class="card orange-top" id="saxton">
-      <h1>04 // Featured Dossier: Saxton Hale</h1>
+      <h1>04 // Dossier: Saxton Hale</h1>
       <h2>1. Continuity &amp; Visual Lock</h2>
       <ul>
         <li><strong>Source Material:</strong> Official Valve TF2 Comics &amp; <em>Jungle Inferno</em> SFM Short.</li>
         <li><strong>Excluded Material:</strong> <em>Versus Saxton Hale</em> gameplay mode (HP pools, rage meters, and cooldowns are non-canonical UI).</li>
       </ul>
-      <h2>2. Vector Classification</h2>
-      <ul>
-        <li><strong>Striking Force:</strong> Tier 3+ / Low Tier 4 (Vaporized the last living Yeti in a single bare-handed strike; effortlessly shatters reinforced steel doors and thick concrete).</li>
       <h2>2. Vector Classification</h2>
       <ul>
         <li><strong>Striking Force:</strong> Tier 3+ / Low Tier 4 (Vaporized the last living Yeti in a single bare-handed strike; effortlessly shatters reinforced steel doors and thick concrete).</li>
