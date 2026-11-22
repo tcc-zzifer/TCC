@@ -3,15 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TCC — The Circular Canon | Analytical Framework</title>
+  <title>TCC // MANNKO — Source Community Analytical Standard</title>
   <style>
+    @font-face {
+      font-family: 'TF2Build';
+      src: url('https://githubusercontent.com') format('truetype'),
+           local('TF2 Build'), local('Impact'), local('Arial Black');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'TF2Secondary';
+      src: url('https://githubusercontent.com') format('truetype'),
+           local('TF2 Secondary'), local('Trebuchet MS');
+      font-display: swap;
+    }
     :root {
-      --bg: #08090c;
-      --panel: #0f1218;
-      --border: #1e2430;
+      --bg: #0b0c0e;
+      --panel: #121419;
+      --panel-alt: #181b22;
+      --border: #272c38;
       --text: #d8dee9;
-      --muted: #7c879b;
-      --cyan: #38bdf8;
+      --muted: #8a94a6;
+      --tf-orange: #e07a2c;
+      --tf-amber: #f59e0b;
+      --arch-cyan: #38bdf8;
       --white: #f8fafc;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,14 +37,24 @@
       line-height: 1.7;
       overflow-x: hidden;
     }
+    .top-hazard {
+      height: 8px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--tf-orange),
+        var(--tf-orange) 14px,
+        #15171c 14px,
+        #15171c 28px
+      );
+    }
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       background: repeating-linear-gradient(
         0deg,
-        rgba(255,255,255,0.015) 0px,
-        rgba(255,255,255,0.015) 1px,
+        rgba(255,255,255,0.014) 0px,
+        rgba(255,255,255,0.014) 1px,
         transparent 1px,
         transparent 3px
       );
@@ -37,40 +62,76 @@
       z-index: 999;
     }
     header {
-      border-bottom: 1px solid var(--border);
-      background: linear-gradient(180deg, #0d1017 0%, var(--bg) 100%);
-      padding: 48px 24px 36px;
+      border-bottom: 2px solid var(--border);
+      background: radial-gradient(circle at top, #1b1f29 0%, var(--bg) 78%);
+      padding: 44px 24px 36px;
       text-align: center;
     }
-    .badge {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--cyan);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-bottom: 16px;
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 18px;
     }
-    h1.hero-title {
-      font-size: clamp(28px, 5vw, 44px);
+    .badge {
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+    }
+    .badge-source {
+      color: var(--tf-amber);
+      background: rgba(224, 122, 44, 0.14);
+      border: 1px solid rgba(224, 122, 44, 0.5);
+    }
+    .badge-arch {
+      color: var(--arch-cyan);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .brand-logo {
+      font-family: 'TF2Build', 'Impact', 'Arial Black', sans-serif;
+      font-size: clamp(42px, 8vw, 76px);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 8px;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
+    }
+    .brand-tcc {
       color: var(--white);
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
+    }
+    .brand-sep {
+      color: var(--arch-cyan);
+      margin: 0 10px;
+    }
+    .brand-mannko {
+      color: var(--tf-orange);
+    }
+    .hero-sub {
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
+      font-size: clamp(16px, 2.5vw, 22px);
+      color: var(--tf-amber);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
     .subtitle {
       color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto 24px;
+      max-width: 740px;
+      margin: 0 auto 26px;
       font-size: 15px;
     }
     .controls {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       justify-content: center;
-      max-width: 720px;
+      max-width: 800px;
       margin: 0 auto;
     }
     input#search {
@@ -80,92 +141,116 @@
       border: 1px solid var(--border);
       color: var(--white);
       padding: 12px 16px;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 14px;
       outline: none;
     }
-    input#search:focus { border-color: var(--cyan); }
+    input#search:focus { border-color: var(--tf-orange); }
     .btn {
-      background: var(--panel);
-      color: var(--cyan);
-      border: 1px solid rgba(56, 189, 248, 0.4);
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
+      background: var(--panel-alt);
+      color: var(--white);
+      border: 1px solid var(--border);
       padding: 12px 18px;
-      border-radius: 8px;
+      border-radius: 6px;
       text-decoration: none;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
       cursor: pointer;
       transition: 0.2s;
     }
-    .btn:hover { background: rgba(56, 189, 248, 0.12); }
+    .btn-orange {
+      border-color: rgba(224, 122, 44, 0.65);
+      color: var(--tf-amber);
+    }
+    .btn:hover {
+      border-color: var(--tf-orange);
+      background: rgba(224, 122, 44, 0.16);
+    }
     .layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 32px;
-      max-width: 1280px;
-      margin: 32px auto;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      max-width: 1340px;
+      margin: 28px auto;
       padding: 0 24px 80px;
     }
     aside {
       position: sticky;
-      top: 24px;
-      height: calc(100vh - 48px);
+      top: 20px;
+      height: calc(100vh - 40px);
       overflow-y: auto;
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
+      border-top: 4px solid var(--tf-orange);
+      border-radius: 8px;
+      padding: 16px;
     }
     aside h3 {
-      font-size: 12px;
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
+      font-size: 14px;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: var(--muted);
+      color: var(--tf-amber);
       margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
     }
     #toc a {
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
       display: block;
       color: var(--text);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 14px;
       padding: 6px 8px;
-      border-radius: 6px;
-      margin-bottom: 4px;
+      border-radius: 4px;
+      margin-bottom: 3px;
+      border-left: 3px solid transparent;
       transition: 0.15s;
     }
     #toc a:hover {
-      background: rgba(56, 189, 248, 0.1);
-      color: var(--cyan);
+      background: rgba(224, 122, 44, 0.12);
+      border-left-color: var(--tf-orange);
+      color: var(--white);
     }
     main {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-top: 4px solid var(--arch-cyan);
+      border-radius: 8px;
       padding: clamp(20px, 4vw, 44px);
     }
     main h1 {
+      font-family: 'TF2Build', 'Impact', 'Arial Black', sans-serif;
       color: var(--white);
-      font-size: 23px;
+      font-size: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       border-bottom: 1px solid var(--border);
       padding-bottom: 10px;
-      margin: 36px 0 16px;
+      margin: 38px 0 16px;
     }
     main h1:first-child { margin-top: 0; }
     main h2 {
-      color: var(--cyan);
-      font-size: 18px;
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
+      color: var(--tf-amber);
+      font-size: 19px;
+      letter-spacing: 0.5px;
       margin: 24px 0 12px;
     }
     main h3 {
-      color: var(--white);
-      font-size: 16px;
+      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
+      color: var(--arch-cyan);
+      font-size: 17px;
       margin: 18px 0 8px;
     }
     main p { margin-bottom: 12px; }
     main ul { margin: 0 0 14px 22px; }
     main li { margin-bottom: 7px; }
     main strong { color: var(--white); }
-    main em { color: #a5b4fc; }
+    main em { color: #93c5fd; }
     .hidden-section { display: none; }
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; }
@@ -174,21 +259,31 @@
   </style>
 </head>
 <body>
+  <div class="top-hazard"></div>
   <header>
-    <div class="badge">Author: ZZIFER • Pure Logic Rules Here</div>
-    <h1 class="hero-title">TCC — The Circular Canon</h1>
+    <div class="badges">
+      <span class="badge badge-source">Source &amp; TF2 Community Analytical Standard</span>
+      <span class="badge badge-arch">Author: ZZIFER • Pure Logic Rules Here</span>
+    </div>
+    <div class="brand-logo">
+      <span class="brand-tcc">TCC</span>
+      <span class="brand-sep">//</span>
+      <span class="brand-mannko">MANNKO</span>
+    </div>
+    <div class="hero-sub">The Circular Canon &amp; Tactical Combat Division</div>
     <p class="subtitle">
-      Unified Analytical Framework, 16-Tier Scale &amp; Tier 16-C Verification Standard.
+      Independent Tactical Combat &amp; Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.
     </p>
     <div class="controls">
-      <input type="text" id="search" placeholder="Search rules, Tier 16-C, Law of Price, BIQ..." />
-      <a class="btn" href="https://github.com" target="_blank">Raw Markdown</a>
+      <input type="text" id="search" placeholder="Search protocols, Street Tiers (2–6), BIQ, Law of Price, Tier 16..." />
+      <a class="btn btn-orange" href="https://github.com" target="_blank">View Dossier Source</a>
+      <a class="btn" href="https://github.com" target="_blank">GitHub Repo</a>
     </div>
   </header>
 
   <div class="layout">
     <aside>
-      <h3>Dossier Index</h3>
+      <h3>// Tactical Protocol Index</h3>
       <div id="toc"></div>
     </aside>
     <main id="content"></main>
@@ -234,35 +329,32 @@
 
     async function loadDossier() {
       const content = document.getElementById('content');
-      const toc = document.getElementById('toc');
-      try {
-        const res = await fetch('./dossiers/part-01-core-and-mechanics.md?v=' + Date.now());
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const md = await res.text();
-        content.innerHTML = renderMd(md);
+const toc = document.getElementById('toc');
+try {
+const res = await fetch('./dossiers/part-01-core-and-mechanics.md?v=' + Date.now());
+if (!res.ok) throw new Error('HTTP ' + res.status);
+const md = await res.text();
+content.innerHTML = renderMd(md);
+toc.innerHTML = '';
+content.querySelectorAll('h1').forEach((h, i) => {
+const id = 'sec-' + i;
+h.id = id;
+const a = document.createElement('a');
+a.href = '#' + id;
+a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
+toc.appendChild(a);
+});
+} catch (err) {
+content.innerHTML = <p style="color:#f87171">Error loading dossier: ${err.message}</p>;
+}
+}
+document.getElementById('search').addEventListener('input', (e) => {
+const q = e.target.value.toLowerCase().trim();
+document.querySelectorAll('#content > *').forEach(el => {
+el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
+});
+});
+loadDossier();
 
-        toc.innerHTML = '';
-        content.querySelectorAll('h1').forEach((h, i) => {
-          const id = 'sec-' + i;
-          h.id = id;
-          const a = document.createElement('a');
-          a.href = '#' + id;
-          a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
-          toc.appendChild(a);
-        });
-      } catch (err) {
-        content.innerHTML = `<p style="color:#f87171">Error loading file: ${err.message}</p>`;
-      }
-    }
 
-    document.getElementById('search').addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      document.querySelectorAll('#content > *').forEach(el => {
-        el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
-      });
-    });
 
-    loadDossier();
-  </script>
-</body>
-</html>
