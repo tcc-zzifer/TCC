@@ -20,7 +20,7 @@ header{border-bottom:2px solid var(--border);background:radial-gradient(circle a
 .logo{font-family:'TF2Build','Impact',sans-serif;font-size:clamp(40px,8vw,74px);letter-spacing:3px;line-height:1.05;margin-bottom:6px}
 .sub{font-family:'TF2Secondary',sans-serif;font-size:clamp(15px,2.4vw,21px);color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
 .desc{color:var(--muted);max-width:740px;margin:0 auto 22px;font-size:14px}
-.nav-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:800px;margin:0 auto}
+.nav-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:960px;margin:0 auto}
 .btn{font-family:'TF2Build','Impact',sans-serif;background:var(--panel-alt);color:var(--muted);border:2px solid var(--border);padding:12px 24px;border-radius:6px;font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;cursor:pointer;transition:.15s}
 .btn.active,.btn:hover{border-color:var(--orange);background:rgba(224,122,44,.18);color:var(--amber)}
 .wrap{display:grid;grid-template-columns:280px 1fr;gap:24px;max-width:1320px;margin:26px auto;padding:0 20px 70px}
@@ -53,9 +53,9 @@ main em{color:#93c5fd}
   <div class="nav-row">
     <button class="btn active" id="btn-core" onclick="loadCore()">01 // Core Protocols</button>
     <button class="btn" id="btn-chars" onclick="loadChars()">02 // Source Character Roster</button>
+    <button class="btn" id="btn-world" onclick="loadWorld()">03 // TCC: The Source Cosmology</button>
   </div>
 </header>
-
 <div class="wrap">
   <aside>
     <h3 id="nav-title">// Terminal Navigation</h3>
@@ -63,13 +63,16 @@ main em{color:#93c5fd}
   </aside>
   <main id="viewer"></main>
 </div>
-
 <script>
 const viewer = document.getElementById('viewer');
 const navList = document.getElementById('nav-list');
 const navTitle = document.getElementById('nav-title');
 const CHAR_FILES = ['saxton-hale.md'];
-
+function setActiveTab(activeId) {
+  ['btn-core', 'btn-chars', 'btn-world'].forEach(id => {
+    document.getElementById(id).classList.toggle('active', id === activeId);
+  });
+}
 function parseMd(text) {
   const lines = text.split(/\r?\n/);
   let html = '', inList = false;
@@ -93,10 +96,8 @@ function parseMd(text) {
   if (inList) html += '</ul>';
   return html;
 }
-
 async function loadCore() {
-  document.getElementById('btn-core').classList.add('active');
-  document.getElementById('btn-chars').classList.remove('active');
+  setActiveTab('btn-core');
   navTitle.textContent = '// Protocol Index';
   viewer.innerHTML = '<p style="color:#f59e0b">Loading dossiers/part-01-core-and-mechanics.md...</p>';
   try {
@@ -116,7 +117,6 @@ async function loadCore() {
     viewer.innerHTML = '<p style="color:#f87171">Error loading core dossier.</p>';
   }
 }
-
 async function openChar(name, link) {
   navList.querySelectorAll('a').forEach(a => a.classList.remove('act'));
   if (link) link.classList.add('act');
@@ -130,10 +130,8 @@ async function openChar(name, link) {
     viewer.innerHTML = '<p style="color:#f87171">Error loading ' + name + '</p>';
   }
 }
-
 function loadChars() {
-  document.getElementById('btn-chars').classList.add('active');
-  document.getElementById('btn-core').classList.remove('active');
+  setActiveTab('btn-chars');
   navTitle.textContent = '// Characters Roster';
   navList.innerHTML = '';
   CHAR_FILES.forEach((file, idx) => {
@@ -144,7 +142,28 @@ function loadChars() {
     if (idx === 0) openChar(file, a);
   });
 }
-
+async function loadWorld() {
+  setActiveTab('btn-world');
+  navTitle.textContent = '// Source Cosmology';
+  viewer.innerHTML = '<p style="color:#f59e0b">Loading TCC: The Source Cosmology...</p>';
+  try {
+    const fileName = encodeURIComponent('TCC: The Source Cosmology');
+    const res = await fetch('./world/' + fileName + '?v=' + Date.now());
+    if (!res.ok) throw new Error(res.status);
+    const text = await res.text();
+    viewer.innerHTML = parseMd(text);
+    navList.innerHTML = '';
+    viewer.querySelectorAll('h1, h2').forEach((h, i) => {
+      h.id = 'world-' + i;
+      const a = document.createElement('a');
+      a.href = '#world-' + i;
+      a.textContent = h.textContent;
+      navList.appendChild(a);
+    });
+  } catch (e) {
+    viewer.innerHTML = '<p style="color:#f87171">Error loading world/TCC: The Source Cosmology.</p>';
+  }
+}
 loadCore();
 </script>
 </body>
