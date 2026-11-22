@@ -1,24 +1,23 @@
-# TCC (The Circular Canon) — Analytical Framework
+# TCC // MANNKO — Source & TF2 Analytical Standard
 
-Author: ZZIFER | Axiom: Pure logic rules here.
+**Author:** ZZIFER | **Axiom:** *For the canon. Pure logic rules here.*
 
-Overview
+## Overview
 
-TCC is a logical analytical framework and fictional cosmology by ZZIFER that evaluates scale, combat, and worldbuilding through visual proof while rejecting narrative inflation.
+**TCC (The Circular Canon)** is an independent tactical analytical framework and original cosmology built specifically for the **Team Fortress 2 and Source Engine community**. It evaluates combat mechanics, street-level engagements, and cosmic structures strictly through verified visual proof, while acting as a unified ring nexus that connects official Source canon and TF2 fan-verses without narrative inflation.
 
-Core Principles
+## Strict Prohibition of External Wikis
 
-The framework relies on visual proof over text claims, independent vector validation, explicit resource costs via the Law of Price, and architectural integrity checks for high-tier cosmological entities.
+Within the TCC standard, citing, referencing, or importing tiering logic from **VS Battles Wiki (VSBW)**, **CSAP**, or any external scaling databases is **strictly prohibited**. TCC rejects "Tier 0 / Boundless" paradoxes, pixel-scaling, and unbacked text hyperbole in favor of self-contained, falsifiable logic.
 
-The 16-Tier Scale
+## Core Principles
 
-The hierarchy spans from sub-biological and local scales (1–6) up through planetary and galactic tiers (7–12), universal/multiversal levels (13–14), and high-dimensional or demiurge classifications (15–16).
+* **Visual Primacy & Gameplay Segregation:** Feats are verified strictly through official visual media (Valve comics, *Meet the Team* shorts, scripted cutscenes, and canonical SFM animations), separating true narrative feats from in-game UI mechanics (HP bars, respawns, cooldowns).
+* **Tactical & Street-Level Precision:** Built to dissect asymmetric Source matchups—accounting for **Battle Intelligence (BIQ)**, anatomical vulnerabilities, stamina depletion, and activation delays via the **Law of Price**.
+* **Architectural Integrity (Tier 16):** The 16-tier scale spans from sub-biological and street-level tiers (1–6) up through planetary, universal, and dimensional layers (7–15), capping at **Tier 16 (Demiurge Spectrum)** where creators are strictly audited for architectural consistency.
 
-Repository Architecture
-
-• dossiers/part-01-core-and-mechanics.md — Complete scale, vector validation, combat protocols, and Tier 15–16 rules.
-• llms.txt — AI indexing manifest and research protocol.
 ## Repository Architecture
 
-* [Part 01: Core Scale & Validation Mechanics](dossiers/part-01-core-and-mechanics.md) — Complete scale, vector validation, combat protocols, and Tier 15–16 rules.
-* [llms.txt](llms.txt) — AI indexing manifest and research protocol.
+* [Part 01: Core Scale & Validation Mechanics](dossiers/part-01-core-and-mechanics.md) — Complete 16-tier scale, vector validation, tactical combat protocols, and Tier 15–16 verification rules.
+* `characters/` — Tactical dossiers for official Source/TF2 characters and verified SFM fan-verse entities.
+* [llms.txt](llms.txt) — AI indexing manifest and strict anti-wiki research protocol.
