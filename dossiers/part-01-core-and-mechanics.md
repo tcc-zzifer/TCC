@@ -59,6 +59,10 @@ Within the **TCC (The Circular Canon)** analytical standard, assigning a single 
   * **16-B. Bound Demiurge:** Creator tied structurally or narratively to its setting:
   * **16-B1. Fractured / Compromised Demiurge:** Suffers from systemic flaws, contradictions, or fragmentation (e.g., *World of Darkness*'s IATIA).
   * **16-B2. Sovereign Bound Demiurge:** Woven into the narrative but maintains 100% architectural integrity.
+  * - **16-B. Bound Demiurge (Story-Embedded Creators):** Entities operating as narrative characters inside the fiction rather than standing outside it, split into two strictly distinct sub-tiers based on operational sovereignty and vulnerability:
+  - **16-B1. Fractured / Vulnerable Bound Creator:** A creator figure embedded inside the story who suffers from structural defects—such as being unable to defeat or subdue their own creations, watching their world fracture or collapse against their will, or losing control over narrative causality. Because their omnipotence is compromised by internal plot resistance, they are strictly capped at **16-B1** and permanently disqualified from 16-C.
+  - **16-B2. Sovereign Bound Creator:** A creator figure who actively enters the narrative and interacts directly with characters, yet remains completely free of structural vulnerabilities—retaining total, unchallenged authority over their creations and world without ever being harmed, outmaneuvered, or forced into crisis by the story. Despite possessing absolute internal control, their direct participation as a character inside the fiction binds them to narrative interaction, capping them at **16-B2** rather than 16-C.
+
   * **16-C. Autonomous Demiurge:** An indivisible, conscious architect exercising unilateral control over the entire cosmology without internal anchors or points of failure.
 
 ### Architectural Case Study: The Principle of Bound Demiurge Rings (TCC Model)
