@@ -1,4 +1,4 @@
-# TCC // MANN CO. (The Circular Canon)
+# TCC // MANN CO. — Source & TF2 Analytical Standard
 
 **Author:** ZZIFER | **Axiom:** *For the canon. Pure logic rules here.*
 
