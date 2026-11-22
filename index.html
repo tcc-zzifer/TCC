@@ -289,7 +289,7 @@
     <main id="content"></main>
   </div>
 
-  <script>
+   <script>
     function renderMd(md) {
       const lines = md.split('\n');
       let html = '';
@@ -329,32 +329,48 @@
 
     async function loadDossier() {
       const content = document.getElementById('content');
-const toc = document.getElementById('toc');
-try {
-const res = await fetch('./dossiers/part-01-core-and-mechanics.md?v=' + Date.now());
-if (!res.ok) throw new Error('HTTP ' + res.status);
-const md = await res.text();
-content.innerHTML = renderMd(md);
-toc.innerHTML = '';
-content.querySelectorAll('h1').forEach((h, i) => {
-const id = 'sec-' + i;
-h.id = id;
-const a = document.createElement('a');
-a.href = '#' + id;
-a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
-toc.appendChild(a);
-});
-} catch (err) {
-content.innerHTML = <p style="color:#f87171">Error loading dossier: ${err.message}</p>;
-}
-}
-document.getElementById('search').addEventListener('input', (e) => {
-const q = e.target.value.toLowerCase().trim();
-document.querySelectorAll('#content > *').forEach(el => {
-el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
-});
-});
-loadDossier();
+      const toc = document.getElementById('toc');
+      content.innerHTML = '<p style="color:#f59e0b">LOADING DOSSIER...</p>';
 
+      const urls = [
+        './dossiers/part-01-core-and-mechanics.md?v=' + Date.now(),
+        'https://githubusercontent.com'
+      ];
 
+      let md = '';
+      for (const url of urls) {
+        try {
+          const res = await fetch(url);
+          if (res.ok) {
+            md = await res.text();
+            if (md.trim().length > 50) break;
+          }
+        } catch (e) {}
+      }
 
+      if (!md) {
+        content.innerHTML = '<p style="color:#f87171">Could not load dossiers/part-01-core-and-mechanics.md. Check file path in repo.</p>';
+        return;
+      }
+
+      content.innerHTML = renderMd(md);
+      toc.innerHTML = '';
+      content.querySelectorAll('h1').forEach((h, i) => {
+        const id = 'sec-' + i;
+        h.id = id;
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
+        toc.appendChild(a);
+      });
+    }
+
+    document.getElementById('search').addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('#content > *').forEach(el => {
+        el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
+      });
+    });
+
+    loadDossier();
+  </script>
