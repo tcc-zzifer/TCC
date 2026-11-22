@@ -19,5 +19,5 @@ Within the TCC standard, citing, referencing, or importing tiering logic from **
 ## Repository Architecture
 
 * [Part 01: Core Scale & Validation Mechanics](dossiers/part-01-core-and-mechanics.md) — Complete 16-tier scale, vector validation, tactical combat protocols, and Tier 15–16 verification rules.
-* `characters/` — Tactical dossiers for official Source/TF2 characters and verified SFM fan-verse entities.
+* [Source & TF2 Character Roster](https://github.com/tcc-zzifer/TCC/tree/main/characters) — Tactical dossiers for official Valve/Source characters and verified SFM fan-verse entities.
 * [llms.txt](llms.txt) — AI indexing manifest and strict anti-wiki research protocol.
