@@ -1,443 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TCC // MANNKO — Source Community Analytical Standard</title>
-  <style>
-    @font-face {
-      font-family: 'TF2Build';
-      src: url('./fonts/tf2build.ttf') format('truetype'),
-           local('TF2 Build'), local('Impact'), local('Arial Black');
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'TF2Secondary';
-      src: url('./fonts/tf2secondary.ttf') format('truetype'),
-           local('TF2 Secondary'), local('Trebuchet MS');
-      font-display: swap;
-    }
-    :root {
-      --bg: #0b0c0e;
-      --panel: #121419;
-      --panel-alt: #181b22;
-      --border: #272c38;
-      --text: #d8dee9;
-      --muted: #8a94a6;
-      --tf-orange: #e07a2c;
-      --tf-amber: #f59e0b;
-      --arch-cyan: #38bdf8;
-      --white: #f8fafc;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-    .top-hazard {
-      height: 8px;
-      background: repeating-linear-gradient(
-        -45deg,
-        var(--tf-orange),
-        var(--tf-orange) 14px,
-        #15171c 14px,
-        #15171c 28px
-      );
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(255,255,255,0.014) 0px,
-        rgba(255,255,255,0.014) 1px,
-        transparent 1px,
-        transparent 3px
-      );
-      pointer-events: none;
-      z-index: 999;
-    }
-    header {
-      border-bottom: 2px solid var(--border);
-      background: radial-gradient(circle at top, #1b1f29 0%, var(--bg) 78%);
-      padding: 40px 24px 32px;
-      text-align: center;
-    }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .badge {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 4px;
-    }
-    .badge-source {
-      color: var(--tf-amber);
-      background: rgba(224, 122, 44, 0.14);
-      border: 1px solid rgba(224, 122, 44, 0.5);
-    }
-    .badge-arch {
-      color: var(--arch-cyan);
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-    }
-    .brand-logo {
-      font-family: 'TF2Build', 'Impact', 'Arial Black', sans-serif;
-      font-size: clamp(42px, 8vw, 76px);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 8px;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
-    }
-    .brand-tcc { color: var(--white); }
-    .brand-sep { color: var(--arch-cyan); margin: 0 10px; }
-    .brand-mannko { color: var(--tf-orange); }
-    .hero-sub {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      font-size: clamp(16px, 2.5vw, 22px);
-      color: var(--tf-amber);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .subtitle {
-      color: var(--muted);
-      max-width: 740px;
-      margin: 0 auto 22px;
-      font-size: 15px;
-    }
-    .nav-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-bottom: 18px;
-    }
-    .tab-btn {
-      font-family: 'TF2Build', 'Impact', sans-serif;
-      background: var(--panel-alt);
-      color: var(--muted);
-      border: 2px solid var(--border);
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-size: 16px;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .tab-btn:hover {
-      color: var(--white);
-      border-color: var(--tf-orange);
-    }
-    .tab-btn.active {
-      background: rgba(224, 122, 44, 0.18);
-      border-color: var(--tf-orange);
-      color: var(--tf-amber);
-      box-shadow: 0 0 16px rgba(224, 122, 44, 0.2);
-    }
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      max-width: 820px;
-      margin: 0 auto;
-    }
-    input#search {
-      flex: 1;
-      min-width: 240px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      color: var(--white);
-      padding: 11px 16px;
-      border-radius: 6px;
-      font-size: 14px;
-      outline: none;
-    }
-    input#search:focus { border-color: var(--tf-orange); }
-    .btn {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      background: var(--panel-alt);
-      color: var(--white);
-      border: 1px solid var(--border);
-      padding: 11px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-orange {
-      border-color: rgba(224, 122, 44, 0.65);
-      color: var(--tf-amber);
-    }
-    .btn:hover {
-      border-color: var(--tf-orange);
-      background: rgba(224, 122, 44, 0.16);
-    }
-    .layout {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 28px;
-      max-width: 1340px;
-      margin: 28px auto;
-      padding: 0 24px 80px;
-    }
-    aside {
-      position: sticky;
-      top: 20px;
-      height: calc(100vh - 40px);
-      overflow-y: auto;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-top: 4px solid var(--tf-orange);
-      border-radius: 8px;
-      padding: 16px;
-    }
-    aside h3 {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--tf-amber);
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-    #toc a {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      display: block;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      padding: 7px 10px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      border-left: 3px solid transparent;
-      cursor: pointer;
-      transition: 0.15s;
-    }
-    #toc a:hover, #toc a.active-item {
-      background: rgba(224, 122, 44, 0.14);
-      border-left-color: var(--tf-orange);
-      color: var(--white);
-    }
-    main {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-top: 4px solid var(--arch-cyan);
-      border-radius: 8px;
-      padding: clamp(20px, 4vw, 44px);
-    }
-    main h1 {
-      font-family: 'TF2Build', 'Impact', 'Arial Black', sans-serif;
-      color: var(--white);
-      font-size: 24px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      margin: 36px 0 16px;
-    }
-    main h1:first-child { margin-top: 0; }
-    main h2 {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      color: var(--tf-amber);
-      font-size: 19px;
-      letter-spacing: 0.5px;
-      margin: 24px 0 12px;
-    }
-    main h3 {
-      font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
-      color: var(--arch-cyan);
-      font-size: 17px;
-      margin: 18px 0 8px;
-    }
-    main p { margin-bottom: 12px; }
-    main ul { margin: 0 0 14px 22px; }
-    main li { margin-bottom: 7px; }
-    main strong { color: var(--white); }
-    main em { color: #93c5fd; }
-    .hidden-section { display: none; }
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
-      aside { position: static; height: auto; max-height: 260px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCC // MANNKO — Source & TF2 Analytical Standard</title>
+<style>
+@font-face{font-family:'TF2Build';src:url('./fonts/tf2build.ttf') format('truetype'),local('TF2 Build'),local('Impact');font-display:swap}
+@font-face{font-family:'TF2Secondary';src:url('./fonts/tf2secondary.ttf') format('truetype'),local('TF2 Secondary'),local('Trebuchet MS');font-display:swap}
+:root{--bg:#0b0c0e;--panel:#121419;--panel-alt:#181b22;--border:#272c38;--text:#d8dee9;--muted:#8a94a6;--orange:#e07a2c;--amber:#f59e0b;--cyan:#38bdf8;--white:#f8fafc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.7}
+.hazard{height:8px;background:repeating-linear-gradient(-45deg,var(--orange),var(--orange) 14px,#15171c 14px,#15171c 28px)}
+header{border-bottom:2px solid var(--border);background:radial-gradient(circle at top,#1b1f29 0%,var(--bg) 78%);padding:36px 20px 28px;text-align:center}
+.badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
+.badge{font-family:'TF2Secondary',sans-serif;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:4px}
+.b-org{color:var(--amber);background:rgba(224,122,44,.14);border:1px solid rgba(224,122,44,.5)}
+.b-cyn{color:var(--cyan);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.4)}
+.logo{font-family:'TF2Build','Impact',sans-serif;font-size:clamp(40px,8vw,74px);letter-spacing:3px;line-height:1.05;margin-bottom:6px}
+.sub{font-family:'TF2Secondary',sans-serif;font-size:clamp(15px,2.4vw,21px);color:var(--amber);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.desc{color:var(--muted);max-width:740px;margin:0 auto 20px;font-size:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px}
+.tab{font-family:'TF2Build','Impact',sans-serif;background:var(--panel-alt);color:var(--muted);border:2px solid var(--border);padding:10px 22px;border-radius:6px;font-size:15px;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+.tab.active,.tab:hover{color:var(--amber);border-color:var(--orange);background:rgba(224,122,44,.16)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:820px;margin:0 auto}
+input{flex:1;min-width:230px;background:var(--panel);border:1px solid var(--border);color:var(--white);padding:10px 14px;border-radius:6px;font-size:14px;outline:none}
+input:focus{border-color:var(--orange)}
+.btn{font-family:'TF2Secondary',sans-serif;background:var(--panel-alt);color:var(--white);border:1px solid var(--border);padding:10px 15px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.btn-o{border-color:rgba(224,122,44,.65);color:var(--amber)}
+.btn:hover{border-color:var(--orange);background:rgba(224,122,44,.16)}
+.wrap{display:grid;grid-template-columns:290px 1fr;gap:24px;max-width:1340px;margin:24px auto;padding:0 20px 70px}
+aside{position:sticky;top:16px;height:calc(100vh - 32px);overflow-y:auto;background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--orange);border-radius:8px;padding:14px}
+aside h3{font-family:'TF2Secondary',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1.4px;color:var(--amber);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+#toc a{font-family:'TF2Secondary',sans-serif;display:block;color:var(--text);text-decoration:none;font-size:14px;padding:6px 8px;border-radius:4px;margin-bottom:3px;border-left:3px solid transparent;cursor:pointer}
+#toc a:hover,#toc a.act{background:rgba(224,122,44,.14);border-left-color:var(--orange);color:var(--white)}
+main{background:var(--panel);border:1px solid var(--border);border-top:4px solid var(--cyan);border-radius:8px;padding:clamp(18px,4vw,40px)}
+main h1{font-family:'TF2Build','Impact',sans-serif;color:var(--white);font-size:23px;letter-spacing:1px;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:8px;margin:32px 0 14px}
+main h1:first-child{margin-top:0}
+main h2{font-family:'TF2Secondary',sans-serif;color:var(--amber);font-size:19px;margin:22px 0 10px}
+main h3{font-family:'TF2Secondary',sans-serif;color:var(--cyan);font-size:17px;margin:16px 0 8px}
+main p{margin-bottom:12px}
+main ul{margin:0 0 14px 22px}
+main li{margin-bottom:6px}
+main strong{color:var(--white)}
+main em{color:#93c5fd}
+.hide{display:none}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static;height:auto;max-height:240px}}
+</style>
 </head>
 <body>
-  <div class="top-hazard"></div>
-  <header>
-    <div class="badges">
-      <span class="badge badge-source">Source &amp; TF2 Community Analytical Standard</span>
-      <span class="badge badge-arch">Author: ZZIFER • Pure Logic Rules Here</span>
-    </div>
-    <div class="brand-logo">
-      <span class="brand-tcc">TCC</span>
-      <span class="brand-sep">//</span>
-      <span class="brand-mannko">MANNKO</span>
-    </div>
-    <div class="hero-sub">The Circular Canon &amp; Tactical Combat Division</div>
-    <p class="subtitle">
-      Independent Tactical Combat &amp; Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.
-    </p>
-
-    <div class="nav-tabs">
-      <button class="tab-btn active" id="tab-core" onclick="switchMode('core')">01 // Core Protocols</button>
-      <button class="tab-btn" id="tab-roster" onclick="switchMode('roster')">02 // Source Character Roster</button>
-    </div>
-
-    <div class="controls">
-      <input type="text" id="search" placeholder="Search protocols, characters, Street Tiers (2–6), BIQ, Tier 16..." />
-      <a class="btn btn-orange" href="https://github.com/tcc-zzifer/TCC/tree/main/characters" target="_blank">Characters Folder</a>
-      <a class="btn" href="https://github.com/tcc-zzifer/TCC" target="_blank">GitHub Repo</a>
-    </div>
-  </header>
-
-  <div class="layout">
-    <aside>
-      <h3 id="sidebar-title">// Tactical Protocol Index</h3>
-      <div id="toc"></div>
-    </aside>
-    <main id="content"></main>
+<div class="hazard"></div>
+<header>
+  <div class="badges">
+    <span class="badge b-org">Source & TF2 Community Analytical Standard</span>
+    <span class="badge b-cyn">Author: ZZIFER • Pure Logic Rules Here</span>
   </div>
-
-  <script>
-    function renderMd(md) {
-      const lines = md.split('\n');
-      let html = '';
-      let inList = false;
-
-      const fmt = (s) => s
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>');
-
-      for (let raw of lines) {
-        const line = raw.trim();
-        if (!line) {
-          if (inList) { html += '</ul>'; inList = false; }
-          continue;
-        }
-        if (line.startsWith('# ')) {
-          if (inList) { html += '</ul>'; inList = false; }
-html += <h1>${fmt(line.slice(2))}</h1>;
-} else if (line.startsWith('## ')) {
-if (inList) { html += ''; inList = false; }
-html += <h2>${fmt(line.slice(3))}</h2>;
-} else if (line.startsWith('### ')) {
-if (inList) { html += ''; inList = false; }
-html += <h3>${fmt(line.slice(4))}</h3>;
-} else if (line.startsWith('- ') || line.startsWith('* ') || line.startsWith('• ')) {
-if (!inList) { html += ''; inList = true; }
-html += <li>${fmt(line.slice(2))}</li>;
-} else {
-if (inList) { html += ''; inList = false; }
-html += <p>${fmt(line)}</p>;
+  <div class="logo"><span style="color:#f8fafc">TCC</span> <span style="color:#38bdf8">//</span> <span style="color:#e07a2c">MANNKO</span></div>
+  <div class="sub">The Circular Canon & Tactical Combat Division</div>
+  <p class="desc">Independent Tactical Combat & Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.</p>
+  <div class="tabs">
+    <button class="tab active" id="t1" onclick="setMode(1)">01 // Core Protocols</button>
+    <button class="tab" id="t2" onclick="setMode(2)">02 // Source Character Roster</button>
+  </div>
+  <div class="bar">
+    <input type="text" id="q" placeholder="Search protocols, characters, Street Tiers (2-6), BIQ, Tier 16...">
+    <a class="btn btn-o" href="https://github.com" target="_blank">Core Dossier Raw</a>
+    <a class="btn" href="https://github.com" target="_blank">Characters Folder</a>
+  </div>
+</header>
+<div class="wrap">
+  <aside><h3 id="st">// Tactical Protocol Index</h3><div id="toc"></div></aside>
+  <main id="out"><p style="color:#f59e0b">Initializing terminal...</p></main>
+</div>
+<script>
+const out=document.getElementById('out'),toc=document.getElementById('toc'),st=document.getElementById('st');
+function mdToHtml(md){
+  const lines=md.split(/\r?\n/);let h='',ul=false;
+  const f=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>');
+  for(let r of lines){
+    const l=r.trim();
+    if(!l){if(ul){h+='</ul>';ul=false;}continue;}
+    if(l.startsWith('# ')){if(ul){h+='</ul>';ul=false;}h+='<h1>'+f(l.slice(2))+'</h1>';}
+    else if(l.startsWith('## ')){if(ul){h+='</ul>';ul=false;}h+='<h2>'+f(l.slice(3))+'</h2>';}
+    else if(l.startsWith('### ')){if(ul){h+='</ul>';ul=false;}h+='<h3>'+f(l.slice(4))+'</h3>';}
+    else if(l.startsWith('- ')||l.startsWith('* ')||l.startsWith('• ')){if(!ul){h+='<ul>';ul=true;}h+='<li>'+f(l.slice(2))+'</li>';}
+    else{if(ul){h+='</ul>';ul=false;}h+='<p>'+f(l)+'</p>';}
+  }
+  if(ul)h+='</ul>';return h;
 }
+async function getTxt(urls){
+  for(const u of urls){try{const r=await fetch(u);if(r.ok){const t=await r.text();if(t.length>10)return t;}}catch(e){}}
+  return '';
 }
-if (inList) html += '';
-return html;
+async function openCore(){
+  st.textContent='// Tactical Protocol Index';
+  out.innerHTML='<p style="color:#f59e0b">Loading Core Protocols...</p>';
+  const md=await getTxt(['dossiers/part-01-core-and-mechanics.md?t='+Date.now(),'https://githubusercontent.com']);
+  if(!md){out.innerHTML='<p style="color:#f87171">Error loading dossiers/part-01-core-and-mechanics.md</p>';return;}
+  out.innerHTML=mdToHtml(md);toc.innerHTML='';
+  out.querySelectorAll('h1').forEach((el,i)=>{
+    el.id='s'+i;const a=document.createElement('a');a.href='#s'+i;
+    a.textContent=el.textContent.replace('TCC Standard Dossier: ','').replace('TCC Standard Protocol: ','');
+    toc.appendChild(a);
+  });
 }
-async function fetchText(urls) {
-for (const url of urls) {
-try {
-const res = await fetch(url);
-if (res.ok) {
-const txt = await res.text();
-if (txt.trim().length > 10) return txt;
+async function openChar(file,el){
+  toc.querySelectorAll('a').forEach(x=>x.classList.remove('act'));
+  if(el)el.classList.add('act');
+  out.innerHTML='<p style="color:#f59e0b">Loading '+file+'...</p>';
+  const md=await getTxt(['characters/'+file+'?t='+Date.now(),'https://githubusercontent.com]);
+  out.innerHTML=md?mdToHtml(md):'<p style="color:#f87171">Error loading '+file+'</p>';
 }
-} catch (e) {}
+async function openRoster(){
+  st.textContent='// Source Character Roster';
+  toc.innerHTML='<p style="color:#8a94a6;font-size:13px">Scanning roster...</p>';
+  let files=['saxton-hale.md'];
+  try{
+    const r=await fetch('https://github.com');
+    if(r.ok){const d=await r.json();const m=d.filter(x=>x.name&&x.name.endsWith('.md')).map(x=>x.name);if(m.length)files=m;}
+  }catch(e){}
+  toc.innerHTML='';
+  files.forEach((f,i)=>{
+    const a=document.createElement('a');
+    a.textContent='// '+f.replace('.md','').replace(/-/g,' ').toUpperCase();
+    a.onclick=()=>openChar(f,a);
+    toc.appendChild(a);
+    if(i===0)openChar(f,a);
+  });
 }
-return '';
+function setMode(m){
+  document.getElementById('q').value='';
+  document.getElementById('t1').classList.toggle('active',m===1);
+  document.getElementById('t2').classList.toggle('active',m===2);
+  if(m===1)openCore();else openRoster();
 }
-async function loadCore() {
-const content = document.getElementById('content');
-const toc = document.getElementById('toc');
-document.getElementById('sidebar-title').textContent = '// Tactical Protocol Index';
-content.innerHTML = 'LOADING CORE PROTOCOLS...';
-const md = await fetchText([
-'./dossiers/part-01-core-and-mechanics.md?v=' + Date.now(),
-'githubusercontent.com'
-]);
-if (!md) {
-content.innerHTML = 'Failed to load Core Protocols.';
-return;
-}
-content.innerHTML = renderMd(md);
-toc.innerHTML = '';
-content.querySelectorAll('h1').forEach((h, i) => {
-const id = 'sec-' + i;
-h.id = id;
-const a = document.createElement('a');
-a.href = '#' + id;
-a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
-toc.appendChild(a);
+document.getElementById('q').addEventListener('input',e=>{
+  const v=e.target.value.toLowerCase().trim();
+  out.querySelectorAll(':scope > *').forEach(el=>el.classList.toggle('hide',v&&!el.textContent.toLowerCase().includes(v)));
 });
-}
-async function loadCharacterFile(filename, linkEl) {
-const content = document.getElementById('content');
-document.querySelectorAll('#toc a').forEach(el => el.classList.remove('active-item'));
-if (linkEl) linkEl.classList.add('active-item');
-content.innerHTML = 'LOADING CHARACTER FILE...';
-const md = await fetchText([
-'./characters/' + filename + '?v=' + Date.now(),
-'githubusercontent.com' + filename
-]);
-content.innerHTML = md ? renderMd(md) : 'Could not load character file.';
-}
-async function loadRoster() {
-const content = document.getElementById('content');
-const toc = document.getElementById('toc');
-document.getElementById('sidebar-title').textContent = '// Verified Source Roster';
-toc.innerHTML = 'Scanning characters/...';
-let files = ['saxton-hale.md'];
-try {
-const apiRes = await fetch('github.com');
-if (apiRes.ok) {
-const list = await apiRes.json();
-const mdFiles = list.filter(f => f.name.endsWith('.md')).map(f => f.name);
-if (mdFiles.length > 0) files = mdFiles;
-}
-} catch (e) {}
-toc.innerHTML = '';
-files.forEach((file, idx) => {
-const a = document.createElement('a');
-const label = file.replace('.md', '').replace(/-/g, ' ').toUpperCase();
-a.textContent = '// ' + label;
-a.onclick = () => loadCharacterFile(file, a);
-toc.appendChild(a);
-if (idx === 0) loadCharacterFile(file, a);
-});
-}
-function switchMode(mode) {
-document.getElementById('search').value = '';
-document.getElementById('tab-core').classList.toggle('active', mode === 'core');
-document.getElementById('tab-roster').classList.toggle('active', mode === 'roster');
-if (mode === 'core') loadCore();
-else loadRoster();
-}
-document.getElementById('search').addEventListener('input', (e) => {
-const q = e.target.value.toLowerCase().trim();
-document.querySelectorAll('#content > *').forEach(el => {
-el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
-});
-});
-loadCore();
+openCore();
+</script>
+</body>
+</html>
