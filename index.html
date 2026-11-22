@@ -7,13 +7,13 @@
   <style>
     @font-face {
       font-family: 'TF2Build';
-      src: url('https://githubusercontent.com') format('truetype'),
+      src: url('./fonts/tf2build.ttf') format('truetype'),
            local('TF2 Build'), local('Impact'), local('Arial Black');
       font-display: swap;
     }
     @font-face {
       font-family: 'TF2Secondary';
-      src: url('https://githubusercontent.com') format('truetype'),
+      src: url('./fonts/tf2secondary.ttf') format('truetype'),
            local('TF2 Secondary'), local('Trebuchet MS');
       font-display: swap;
     }
@@ -64,7 +64,7 @@
     header {
       border-bottom: 2px solid var(--border);
       background: radial-gradient(circle at top, #1b1f29 0%, var(--bg) 78%);
-      padding: 44px 24px 36px;
+      padding: 40px 24px 32px;
       text-align: center;
     }
     .badges {
@@ -72,7 +72,7 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .badge {
       font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
@@ -102,36 +102,59 @@
       margin-bottom: 8px;
       text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
     }
-    .brand-tcc {
-      color: var(--white);
-    }
-    .brand-sep {
-      color: var(--arch-cyan);
-      margin: 0 10px;
-    }
-    .brand-mannko {
-      color: var(--tf-orange);
-    }
+    .brand-tcc { color: var(--white); }
+    .brand-sep { color: var(--arch-cyan); margin: 0 10px; }
+    .brand-mannko { color: var(--tf-orange); }
     .hero-sub {
       font-family: 'TF2Secondary', 'Trebuchet MS', sans-serif;
       font-size: clamp(16px, 2.5vw, 22px);
       color: var(--tf-amber);
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
     .subtitle {
       color: var(--muted);
       max-width: 740px;
-      margin: 0 auto 26px;
+      margin: 0 auto 22px;
       font-size: 15px;
+    }
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+    .tab-btn {
+      font-family: 'TF2Build', 'Impact', sans-serif;
+      background: var(--panel-alt);
+      color: var(--muted);
+      border: 2px solid var(--border);
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .tab-btn:hover {
+      color: var(--white);
+      border-color: var(--tf-orange);
+    }
+    .tab-btn.active {
+      background: rgba(224, 122, 44, 0.18);
+      border-color: var(--tf-orange);
+      color: var(--tf-amber);
+      box-shadow: 0 0 16px rgba(224, 122, 44, 0.2);
     }
     .controls {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto;
     }
     input#search {
@@ -140,7 +163,7 @@
       background: var(--panel);
       border: 1px solid var(--border);
       color: var(--white);
-      padding: 12px 16px;
+      padding: 11px 16px;
       border-radius: 6px;
       font-size: 14px;
       outline: none;
@@ -151,10 +174,10 @@
       background: var(--panel-alt);
       color: var(--white);
       border: 1px solid var(--border);
-      padding: 12px 18px;
+      padding: 11px 16px;
       border-radius: 6px;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -204,14 +227,15 @@
       color: var(--text);
       text-decoration: none;
       font-size: 14px;
-      padding: 6px 8px;
+      padding: 7px 10px;
       border-radius: 4px;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
       border-left: 3px solid transparent;
+      cursor: pointer;
       transition: 0.15s;
     }
-    #toc a:hover {
-      background: rgba(224, 122, 44, 0.12);
+    #toc a:hover, #toc a.active-item {
+      background: rgba(224, 122, 44, 0.14);
       border-left-color: var(--tf-orange);
       color: var(--white);
     }
@@ -230,7 +254,7 @@
       text-transform: uppercase;
       border-bottom: 1px solid var(--border);
       padding-bottom: 10px;
-      margin: 38px 0 16px;
+      margin: 36px 0 16px;
     }
     main h1:first-child { margin-top: 0; }
     main h2 {
@@ -274,22 +298,28 @@
     <p class="subtitle">
       Independent Tactical Combat &amp; Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.
     </p>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" id="tab-core" onclick="switchMode('core')">01 // Core Protocols</button>
+      <button class="tab-btn" id="tab-roster" onclick="switchMode('roster')">02 // Source Character Roster</button>
+    </div>
+
     <div class="controls">
-      <input type="text" id="search" placeholder="Search protocols, Street Tiers (2–6), BIQ, Law of Price, Tier 16..." />
-      <a class="btn btn-orange" href="https://github.com" target="_blank">View Dossier Source</a>
-      <a class="btn" href="https://github.com" target="_blank">GitHub Repo</a>
+      <input type="text" id="search" placeholder="Search protocols, characters, Street Tiers (2–6), BIQ, Tier 16..." />
+      <a class="btn btn-orange" href="https://github.com/tcc-zzifer/TCC/tree/main/characters" target="_blank">Characters Folder</a>
+      <a class="btn" href="https://github.com/tcc-zzifer/TCC" target="_blank">GitHub Repo</a>
     </div>
   </header>
 
   <div class="layout">
     <aside>
-      <h3>// Tactical Protocol Index</h3>
+      <h3 id="sidebar-title">// Tactical Protocol Index</h3>
       <div id="toc"></div>
     </aside>
     <main id="content"></main>
   </div>
 
-   <script>
+  <script>
     function renderMd(md) {
       const lines = md.split('\n');
       let html = '';
@@ -308,69 +338,106 @@
         }
         if (line.startsWith('# ')) {
           if (inList) { html += '</ul>'; inList = false; }
-          html += `<h1>${fmt(line.slice(2))}</h1>`;
-        } else if (line.startsWith('## ')) {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += `<h2>${fmt(line.slice(3))}</h2>`;
-        } else if (line.startsWith('### ')) {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += `<h3>${fmt(line.slice(4))}</h3>`;
-        } else if (line.startsWith('- ') || line.startsWith('* ') || line.startsWith('• ')) {
-          if (!inList) { html += '<ul>'; inList = true; }
-          html += `<li>${fmt(line.slice(2))}</li>`;
-        } else {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += `<p>${fmt(line)}</p>`;
-        }
-      }
-      if (inList) html += '</ul>';
-      return html;
-    }
-
-    async function loadDossier() {
-      const content = document.getElementById('content');
-      const toc = document.getElementById('toc');
-      content.innerHTML = '<p style="color:#f59e0b">LOADING DOSSIER...</p>';
-
-      const urls = [
-        './dossiers/part-01-core-and-mechanics.md?v=' + Date.now(),
-        'https://githubusercontent.com'
-      ];
-
-      let md = '';
-      for (const url of urls) {
-        try {
-          const res = await fetch(url);
-          if (res.ok) {
-            md = await res.text();
-            if (md.trim().length > 50) break;
-          }
-        } catch (e) {}
-      }
-
-      if (!md) {
-        content.innerHTML = '<p style="color:#f87171">Could not load dossiers/part-01-core-and-mechanics.md. Check file path in repo.</p>';
-        return;
-      }
-
-      content.innerHTML = renderMd(md);
-      toc.innerHTML = '';
-      content.querySelectorAll('h1').forEach((h, i) => {
-        const id = 'sec-' + i;
-        h.id = id;
-        const a = document.createElement('a');
-        a.href = '#' + id;
-        a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
-        toc.appendChild(a);
-      });
-    }
-
-    document.getElementById('search').addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      document.querySelectorAll('#content > *').forEach(el => {
-        el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
-      });
-    });
-
-    loadDossier();
-  </script>
+html += <h1>${fmt(line.slice(2))}</h1>;
+} else if (line.startsWith('## ')) {
+if (inList) { html += ''; inList = false; }
+html += <h2>${fmt(line.slice(3))}</h2>;
+} else if (line.startsWith('### ')) {
+if (inList) { html += ''; inList = false; }
+html += <h3>${fmt(line.slice(4))}</h3>;
+} else if (line.startsWith('- ') || line.startsWith('* ') || line.startsWith('• ')) {
+if (!inList) { html += ''; inList = true; }
+html += <li>${fmt(line.slice(2))}</li>;
+} else {
+if (inList) { html += ''; inList = false; }
+html += <p>${fmt(line)}</p>;
+}
+}
+if (inList) html += '';
+return html;
+}
+async function fetchText(urls) {
+for (const url of urls) {
+try {
+const res = await fetch(url);
+if (res.ok) {
+const txt = await res.text();
+if (txt.trim().length > 10) return txt;
+}
+} catch (e) {}
+}
+return '';
+}
+async function loadCore() {
+const content = document.getElementById('content');
+const toc = document.getElementById('toc');
+document.getElementById('sidebar-title').textContent = '// Tactical Protocol Index';
+content.innerHTML = 'LOADING CORE PROTOCOLS...';
+const md = await fetchText([
+'./dossiers/part-01-core-and-mechanics.md?v=' + Date.now(),
+'githubusercontent.com'
+]);
+if (!md) {
+content.innerHTML = 'Failed to load Core Protocols.';
+return;
+}
+content.innerHTML = renderMd(md);
+toc.innerHTML = '';
+content.querySelectorAll('h1').forEach((h, i) => {
+const id = 'sec-' + i;
+h.id = id;
+const a = document.createElement('a');
+a.href = '#' + id;
+a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
+toc.appendChild(a);
+});
+}
+async function loadCharacterFile(filename, linkEl) {
+const content = document.getElementById('content');
+document.querySelectorAll('#toc a').forEach(el => el.classList.remove('active-item'));
+if (linkEl) linkEl.classList.add('active-item');
+content.innerHTML = 'LOADING CHARACTER FILE...';
+const md = await fetchText([
+'./characters/' + filename + '?v=' + Date.now(),
+'githubusercontent.com' + filename
+]);
+content.innerHTML = md ? renderMd(md) : 'Could not load character file.';
+}
+async function loadRoster() {
+const content = document.getElementById('content');
+const toc = document.getElementById('toc');
+document.getElementById('sidebar-title').textContent = '// Verified Source Roster';
+toc.innerHTML = 'Scanning characters/...';
+let files = ['saxton-hale.md'];
+try {
+const apiRes = await fetch('github.com');
+if (apiRes.ok) {
+const list = await apiRes.json();
+const mdFiles = list.filter(f => f.name.endsWith('.md')).map(f => f.name);
+if (mdFiles.length > 0) files = mdFiles;
+}
+} catch (e) {}
+toc.innerHTML = '';
+files.forEach((file, idx) => {
+const a = document.createElement('a');
+const label = file.replace('.md', '').replace(/-/g, ' ').toUpperCase();
+a.textContent = '// ' + label;
+a.onclick = () => loadCharacterFile(file, a);
+toc.appendChild(a);
+if (idx === 0) loadCharacterFile(file, a);
+});
+}
+function switchMode(mode) {
+document.getElementById('search').value = '';
+document.getElementById('tab-core').classList.toggle('active', mode === 'core');
+document.getElementById('tab-roster').classList.toggle('active', mode === 'roster');
+if (mode === 'core') loadCore();
+else loadRoster();
+}
+document.getElementById('search').addEventListener('input', (e) => {
+const q = e.target.value.toLowerCase().trim();
+document.querySelectorAll('#content > *').forEach(el => {
+el.classList.toggle('hidden-section', q && !el.textContent.toLowerCase().includes(q));
+});
+});
+loadCore();
