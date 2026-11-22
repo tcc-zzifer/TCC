@@ -1,3 +1,30 @@
+# TCC // MANN CO. Preamble: Why Legacy Scaling Systems Failed
+
+**Author:** ZZIFER | **Classification:** System Foundation & Methodological Audit
+
+## 1. The Illusion of "Scientific" Scaling: Death Battle & VSBW
+
+For over a decade, internet battle-boarding has been dominated by a single, deeply flawed paradigm popularized by mainstream entertainment shows like **Death Battle** and codified into rigid databases like **VS Battles Wiki (VSBW)**. While initially framed as an objective, "scientific" way to analyze fictional characters, this methodology rapidly devolved into a **low-quality analytical system** built on mathematical illusions rather than narrative and tactical reality.
+
+Instead of examining how a character actually fights, thinks, and survives within their own setting, legacy systems rely on **pixel-scaling** (measuring screen pixels on animated frames to invent arbitrary megatons of TNT), **unverified hyperbole** (treating poetic metaphors as literal physical laws), and **linear ABC-chains**. The result is a system that routinely produces absurd, self-contradictory statistics while ignoring the actual mechanics of combat.
+
+## 2. Systemic Hypocrisy: Double Standards in Practice
+
+The core failure of this legacy framework is not merely bad math—it is **methodological hypocrisy**, where rules are selectively enforced or discarded depending on which franchise is being favored:
+
+* **Case Study I — Tracer vs. Scout (Team Fortress 2):**
+  In one of the most notorious examples of selective methodology, the analysis applied two completely incompatible standards to the combatants. While Tracer was evaluated using cinematic lore feats, **the Scout (Jeremy)** was severely restricted by raw in-game engine limitations—capping his running speed at a literal 17 mph gameplay metric while dismissing his canonical durability from the Valve comics (surviving direct rocket blasts in *Meet the Medic*) and misrepresenting the mechanics of *Bonk! Atomic Punch* (which in canon and *Meet the Scout* allows him to perceive and dodge incoming gunfire in real time, rather than granting passive magical "intangibility"). Stripping a Source/TF2 character of narrative feats while enforcing gameplay UI limits is a textbook example of low-quality, biased analysis.
+* **Case Study II — Ben 10 vs. Green Lantern (Hal Jordan):**
+  Perhaps the most infamous scandal in mainstream battle-boarding history demonstrated how legacy systems manipulate **Continuity Locks** and **Law of Price** rules to force a predetermined outcome. In that matchup, Hal Jordan was granted a composite amalgam of decades of contradictory comic-book eras (including outliers and power-ups he no longer possessed), whereas Ben Tennyson was restricted to a rigid, idealized interpretation of Alien X that ignored the Omnitrix's canonical failsafes (which react automatically to Big Bang-level threats) and resolved the fight via a time-travel paradox that violated the established rules of both characters' abilities.
+
+## 3. The TCC // MANN CO. Solution
+
+**TCC (The Circular Canon)** was engineered specifically to replace this broken, inconsistent framework with a **transparent, high-integrity analytical standard** tailored for the **Source Engine and Team Fortress 2 community**—and scalable all the way to top-tier cosmology without losing logical coherence:
+
+1. **Zero Tolerance for Double Standards:** Both combatants in any evaluation are bound by the exact same **Continuity Lock** and **Visual Primacy** rules. Gameplay UI (HP bars, engine speed caps, respawns) is never confused with canonical feats.
+2. **Tactical Reality Over Pixel Math:** Street-level and mid-tier Source characters are judged by **Battle Intelligence (BIQ)**, anatomical vulnerabilities, stamina costs (**Law of Price**), and arsenal mechanics—not invented pixel-calculations.
+3. **Architectural Audit at the Peak:** The absurd "Tier 0 / Boundless" loophole is permanently abolished in favor of **Tier 16**, where every supreme creator is audited for logical consistency and operational control.
+
 # TCC Standard Dossier: Scale Tiers & Vector Validation Protocol
 
 ## 1. Fundamental Conditions for Tier Assignment
