@@ -217,47 +217,29 @@
     </aside>
     <main id="viewer"></main>
   </div>
-
-  <script>
+     <script>
     const viewer = document.getElementById('viewer');
     const navList = document.getElementById('nav-list');
     const navTitle = document.getElementById('nav-title');
     const CHAR_FILES = ['saxton-hale.md'];
-    const DS_URL = 'https://discord.gg/' + 'J6TxrwmybW';
-
-    document.getElementById('btn-ds').href = DS_URL;
+    document.getElementById('btn-ds').href = 'https://discord.gg' + 'J6TxrwmybW';
 
     function setTab(id) {
-      ['btn-core', 'btn-chars', 'btn-world'].forEach(btnId => {
-        document.getElementById(btnId).classList.toggle('active', btnId === id);
-      });
+      ['btn-core', 'btn-chars', 'btn-world'].forEach(b => document.getElementById(b).classList.toggle('active', b === id));
     }
 
     function parseMd(text) {
-      const lines = text.split(/\r?\n/);
       let html = '', inList = false;
-      const fmt = s => s
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-
-      for (const raw of lines) {
+      const fmt = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+        .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
+        .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+      for (const raw of text.split(/\r?\n/)) {
         const l = raw.trim();
-        if (!l) {
-          if (inList) { html += '</ul>'; inList = false; }
-          continue;
-        }
-        if (l.startsWith('# ')) {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += '<h1>' + fmt(l.slice(2)) + '</h1>';
-        } else if (l.startsWith('## ')) {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += '<h2>' + fmt(l.slice(3)) + '</h2>';
-        } else if (l.startsWith('### ')) {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += '<h3>' + fmt(l.slice(4)) + '</h3>';
-        } else if (l.startsWith('- ') || l.startsWith('* ') || l.startsWith('• ')) {
+        if (!l) { if (inList) { html += '</ul>'; inList = false; } continue; }
+        if (l.startsWith('# ')) { if (inList) { html += '</ul>'; inList = false; } html += '<h1>' + fmt(l.slice(2)) + '</h1>'; }
+        else if (l.startsWith('## ')) { if (inList) { html += '</ul>'; inList = false; } html += '<h2>' + fmt(l.slice(3)) + '</h2>'; }
+        else if (l.startsWith('### ')) { if (inList) { html += '</ul>'; inList = false; } html += '<h3>' + fmt(l.slice(4)) + '</h3>'; }
+        else if (l.startsWith('- ') || l.startsWith('* ') || l.startsWith('• ')) {
           if (!inList) { html += '<ul>'; inList = true; }
           html += '<li>' + fmt(l.slice(2)) + '</li>';
         } else {
@@ -272,7 +254,7 @@
     async function loadCore() {
       setTab('btn-core');
       navTitle.textContent = '// Protocol Index';
-      viewer.innerHTML = '<p style="color:#f59e0b">Loading core protocols...</p>';
+      viewer.innerHTML = '<p style="color:#f59e0b">Loading...</p>';
       try {
         const res = await fetch('./dossiers/part-01-core-and-mechanics.md?v=' + Date.now());
         if (!res.ok) throw new Error(res.status);
@@ -285,54 +267,53 @@
           a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
           navList.appendChild(a);
         });
-      } catch (e) {
-        viewer.innerHTML = '<p style="color:#f87171">Error loading core dossier.</p>';
-}
-}
-async function openChar(file, link) {
-navList.querySelectorAll('a').forEach(a => a.classList.remove('act'));
-if (link) link.classList.add('act');
-viewer.innerHTML = 'Loading ' + file + '...';
-try {
-const res = await fetch('./characters/' + file + '?v=' + Date.now());
-if (!res.ok) throw new Error(res.status);
-viewer.innerHTML = parseMd(await res.text());
-} catch (e) {
-viewer.innerHTML = 'Error loading ' + file + '';
-}
-}
-function loadChars() {
-setTab('btn-chars');
-navTitle.textContent = '// Characters Roster';
-navList.innerHTML = '';
-CHAR_FILES.forEach((file, idx) => {
-const a = document.createElement('a');
-a.textContent = '// ' + file.replace('.md', '').replace(/-/g, ' ').toUpperCase();
-a.onclick = () => openChar(file, a);
-navList.appendChild(a);
-if (idx === 0) openChar(file, a);
-});
-}
-async function loadWorld() {
-setTab('btn-world');
-navTitle.textContent = '// Source Cosmology';
-viewer.innerHTML = 'Loading cosmology...';
-try {
-const url = './world/' + encodeURIComponent('TCC: The Source Cosmology') + '?v=' + Date.now();
-const res = await fetch(url);
-if (!res.ok) throw new Error(res.status);
-viewer.innerHTML = parseMd(await res.text());
-navList.innerHTML = '';
-viewer.querySelectorAll('h1, h2').forEach((h, i) => {
-h.id = 'world-' + i;
-const a = document.createElement('a');
-a.href = '#world-' + i;
-a.textContent = h.textContent;
-navList.appendChild(a);
-});
-} catch (e) {
-viewer.innerHTML = 'Error loading world dossier.';
-}
-}
-loadCore();
-    
+      } catch (e) { viewer.innerHTML = '<p style="color:#f87171">Error: ' + e.message + '</p>'; }
+    }
+
+    async function openChar(file, link) {
+      navList.querySelectorAll('a').forEach(a => a.classList.remove('act'));
+      if (link) link.classList.add('act');
+      viewer.innerHTML = '<p style="color:#f59e0b">Loading...</p>';
+      try {
+        const res = await fetch('./characters/' + file + '?v=' + Date.now());
+        if (!res.ok) throw new Error(res.status);
+        viewer.innerHTML = parseMd(await res.text());
+      } catch (e) { viewer.innerHTML = '<p style="color:#f87171">Error: ' + e.message + '</p>'; }
+    }
+
+    function loadChars() {
+      setTab('btn-chars');
+      navTitle.textContent = '// Characters Roster';
+      navList.innerHTML = '';
+      CHAR_FILES.forEach((file, idx) => {
+        const a = document.createElement('a');
+        a.textContent = '// ' + file.replace('.md', '').replace(/-/g, ' ').toUpperCase();
+        a.onclick = () => openChar(file, a);
+        navList.appendChild(a);
+        if (idx === 0) openChar(file, a);
+      });
+    }
+
+    async function loadWorld() {
+      setTab('btn-world');
+      navTitle.textContent = '// Source Cosmology';
+      viewer.innerHTML = '<p style="color:#f59e0b">Loading...</p>';
+      try {
+        const res = await fetch('./world/' + encodeURIComponent('TCC: The Source Cosmology') + '?v=' + Date.now());
+        if (!res.ok) throw new Error(res.status);
+        viewer.innerHTML = parseMd(await res.text());
+        navList.innerHTML = '';
+        viewer.querySelectorAll('h1, h2').forEach((h, i) => {
+          h.id = 'world-' + i;
+          const a = document.createElement('a');
+          a.href = '#world-' + i;
+          a.textContent = h.textContent;
+          navList.appendChild(a);
+        });
+      } catch (e) { viewer.innerHTML = '<p style="color:#f87171">Error: ' + e.message + '</p>'; }
+    }
+
+    loadCore();
+  </script>
+</body>
+</html>
