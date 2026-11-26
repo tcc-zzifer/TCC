@@ -28,7 +28,6 @@
       min-height: 100vh;
     }
 
-    /* Фоновое кольцо логотипа TCC */
     body::before {
       content: "";
       position: fixed;
@@ -131,7 +130,6 @@
       letter-spacing: 0.1em;
     }
 
-    /* Оформление подгруженного текста из папок */
     .content h1, .content h2, .content h3 {
       font-family: 'Anton', Impact, sans-serif;
       letter-spacing: 0.04em;
@@ -172,7 +170,7 @@
         <button class="tab" id="btn-scaling" onclick="loadSection('scaling')">Scaling</button>
       </div>
 
-      <a class="yt" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+      <a class="yt" href="https://www.youtube.com/channel/UCgWFNmYZIGb4mj6OdIAl5-Q" target="_blank" rel="noopener">YouTube</a>
     </div>
   </header>
 
@@ -182,38 +180,34 @@
   </main>
 
   <script>
-    const REPO = 'tcc-zzifer/TCC';
-    const BRANCH = 'main';
+    const FILES = {
+      cosmology: 'https://github.com/tcc-zzifer/TCC/blob/main/scaling/tcc',
+      scaling: 'https://github.com/tcc-zzifer/TCC/blob/main/cosmology/tcc'
+    };
 
-    async function loadSection(folder) {
+    async function loadSection(section) {
       document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-      document.getElementById('btn-' + folder).classList.add('active');
-      history.replaceState(null, '', '#' + folder);
+      document.getElementById('btn-' + section).classList.add('active');
+      history.replaceState(null, '', '#' + section);
 
       const status = document.getElementById('status');
       const viewer = document.getElementById('viewer');
-      status.textContent = `// ARCHIVE: ${folder.toUpperCase()} — FETCHING...`;
+      status.textContent = `// ARCHIVE: ${section.toUpperCase()} — FETCHING...`;
       viewer.innerHTML = '';
 
       try {
-        // Получаем список файлов внутри папки cosmology или scaling
-        const res = await fetch(`https://github.com{REPO}/contents/${folder}?ref=${BRANCH}`);
-        const files = await res.json();
-        const target = Array.isArray(files) ? files.find(f => f.type === 'file') : null;
+        const res = await fetch(FILES[section] + '?t=' + Date.now());
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const text = (await res.text()).trim();
 
-        if (!target) {
-          status.textContent = `// ${folder.toUpperCase()} — NO FILE FOUND`;
+        status.textContent = `// ARCHIVE: ${section.toUpperCase()} / TCC`;
+        if (!text) {
+          viewer.innerHTML = `<p style="color: var(--muted);">// FILE IS CURRENTLY EMPTY.</p>`;
           return;
         }
-
-        // Скачиваем сырой текст из файла и рендерим
-        const rawRes = await fetch(target.download_url);
-        const text = await rawRes.text();
-
-        status.textContent = `// ARCHIVE: ${folder.toUpperCase()} / ${target.name}`;
         viewer.innerHTML = marked.parse(text);
       } catch (e) {
-        status.textContent = `// ERROR LOADING ${folder.toUpperCase()}`;
+        status.textContent = `// ERROR LOADING ${section.toUpperCase()}`;
         viewer.innerHTML = `<p>Failed to fetch content from GitHub repository.</p>`;
       }
     }
