@@ -1,319 +1,409 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TCC // MANN CO. — Source &amp; TF2 Analytical Standard</title>
-  <link rel="icon" type="image/png" href="./favicon.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TCC — Cosmology & Scaling</title>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    @font-face {
-      font-family: 'TF2Build';
-      src: url('./fonts/tf2build.ttf') format('truetype'), local('TF2 Build'), local('Impact');
-      font-display: swap;
-    }
-    @font-face {
-      font-family: 'TF2Secondary';
-      src: url('./fonts/tf2secondary.ttf') format('truetype'), local('TF2 Secondary'), local('Trebuchet MS');
-      font-display: swap;
-    }
     :root {
       --bg: #0b0c0e;
-      --panel: #121419;
-      --panel-alt: #181b22;
-      --border: #272c38;
-      --text: #d8dee9;
-      --muted: #8a94a6;
-      --orange: #e07a2c;
-      --amber: #f59e0b;
-      --cyan: #38bdf8;
-      --white: #f8fafc;
+      --surface: #121418;
+      --surface-hover: #181b20;
+      --border: #232730;
+      --text-primary: #eceef2;
+      --text-secondary: #9aa1ae;
+      --text-muted: #626976;
+      --accent: #e2e5ec;
+      --accent-subtle: rgba(226, 229, 236, 0.08);
+      --yt-accent: #d9383a;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      line-height: 1.7;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
-    .hazard {
-      height: 8px;
-      background: repeating-linear-gradient(-45deg, var(--orange), var(--orange) 14px, #15171c 14px, #15171c 28px);
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
     }
+
+    /* Header & Top Navigation */
     header {
-      border-bottom: 2px solid var(--border);
-      background: radial-gradient(circle at top, #1b1f29 0%, var(--bg) 78%);
-      padding: 36px 20px 28px;
-      text-align: center;
-    }
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-      margin-bottom: 14px;
-    }
-    .badge {
-      font-family: 'TF2Secondary', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 4px;
-    }
-    .b-org { color: var(--amber); background: rgba(224, 122, 44, .14); border: 1px solid rgba(224, 122, 44, .5); }
-    .b-cyn { color: var(--cyan); background: rgba(56, 189, 248, .1); border: 1px solid rgba(56, 189, 248, .4); }
-    .logo {
-      font-family: 'TF2Build', 'Impact', sans-serif;
-      font-size: clamp(40px, 8vw, 74px);
-      letter-spacing: 3px;
-      line-height: 1.05;
-      margin-bottom: 10px;
-    }
-    .desc {
-      color: var(--muted);
-      max-width: 740px;
-      margin: 0 auto 22px;
-      font-size: 14px;
-    }
-    .nav-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-    .btn {
-      font-family: 'TF2Build', 'Impact', sans-serif;
-      background: var(--panel-alt);
-      color: var(--muted);
-      border: 2px solid var(--border);
-      padding: 11px 18px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.1px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: .15s;
-    }
-    .btn.active, .btn:hover {
-      border-color: var(--orange);
-      background: rgba(224, 122, 44, .18);
-      color: var(--amber);
-    }
-    .btn-discord { border-color: rgba(88, 101, 242, .65); color: #8ea1e1; }
-    .btn-yt { border-color: rgba(239, 68, 68, .65); color: #fca5a5; }
-    .btn-steam { border-color: rgba(56, 189, 248, .65); color: #7dd3fc; }
-    .wrap {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      max-width: 1320px;
-      margin: 26px auto;
-      padding: 0 20px 70px;
-    }
-    aside {
       position: sticky;
-      top: 16px;
-      height: calc(100vh - 32px);
-      overflow-y: auto;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-top: 4px solid var(--orange);
-      border-radius: 8px;
-      padding: 16px;
-    }
-    aside h3 {
-      font-family: 'TF2Secondary', sans-serif;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 1.4px;
-      color: var(--amber);
-      margin-bottom: 10px;
-      padding-bottom: 6px;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 12, 14, 0.88);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
-    aside a {
-      font-family: 'TF2Secondary', sans-serif;
-      display: block;
-      color: var(--text);
+
+    .nav-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       text-decoration: none;
-      font-size: 14px;
-      padding: 7px 9px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-      border-left: 3px solid transparent;
-      cursor: pointer;
+      color: var(--text-primary);
     }
-    aside a:hover, aside a.act {
-      background: rgba(224, 122, 44, .14);
-      border-left-color: var(--orange);
-      color: var(--white);
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--text-primary);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
     }
-    main {
-      background: var(--panel);
+
+    .brand-title {
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      font-size: 1rem;
+    }
+
+    /* Section Switcher */
+    .switcher {
+      display: inline-flex;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-top: 4px solid var(--cyan);
       border-radius: 8px;
-      padding: clamp(20px, 4vw, 40px);
+      padding: 3px;
     }
-    main h1 {
-      font-family: 'TF2Build', 'Impact', sans-serif;
-      color: var(--white);
-      font-size: 23px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+
+    .switch-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.45rem 1.15rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .switch-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .switch-btn.active {
+      background: var(--accent);
+      color: #0b0c0e;
+      font-weight: 600;
+    }
+
+    /* External Links (YouTube + GitHub) */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .ext-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-decoration: none;
+      font-size: 0.825rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.85rem;
+      border-radius: 7px;
+      transition: all 0.2s ease;
+    }
+
+    .ext-link:hover {
+      border-color: var(--text-secondary);
+      color: var(--text-primary);
+      background: var(--surface-hover);
+    }
+
+    .ext-link.yt:hover {
+      border-color: var(--yt-accent);
+      color: #fff;
+    }
+
+    /* Main Container */
+    main {
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+      flex: 1;
+    }
+
+    .hero {
       border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-      margin: 34px 0 14px;
+      padding-bottom: 2.25rem;
+      margin-bottom: 2.5rem;
     }
-    main h1:first-child { margin-top: 0; }
-    main h2 { font-family: 'TF2Secondary', sans-serif; color: var(--amber); font-size: 19px; margin: 22px 0 10px; }
-    main h3 { font-family: 'TF2Secondary', sans-serif; color: var(--cyan); font-size: 16px; margin: 16px 0 6px; }
-    main p { margin-bottom: 12px; }
-    main ul { margin: 0 0 14px 22px; }
-    main li { margin-bottom: 7px; }
-    main strong { color: var(--white); }
-    main em { color: #93c5fd; }
-    main a { color: var(--cyan); }
-    @media (max-width: 900px) {
-      .wrap { grid-template-columns: 1fr; }
-      aside { position: static; height: auto; max-height: 240px; }
+
+    .hero-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: var(--text-secondary);
+      max-width: 740px;
+      font-size: 1.02rem;
+    }
+
+    /* Tab Views */
+    .view-section {
+      display: none;
+      animation: fadeIn 0.22s ease;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards & Grids */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .repo-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 2px;
+    }
+
+    .repo-badge:hover {
+      color: var(--text-primary);
+      border-color: var(--text-primary);
+    }
+
+    .callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.35rem 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.96rem;
+    }
+
+    .callout strong {
+      color: var(--text-primary);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.15rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: #383e4c;
+    }
+
+    .card-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      color: var(--text-primary);
+    }
+
+    .card p, .card li {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .card li::before {
+      content: "— ";
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Scale Table */
+    .scale-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .scale-head {
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .scale-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .scale-row:last-child {
+      border-bottom: none;
+    }
+
+    .scale-rank {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .scale-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 640px) {
+      .scale-row {
+        grid-template-columns: 1fr;
+        gap: 0.35rem;
+      }
+      .nav-container {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="hazard"></div>
+
   <header>
-    <div class="badges">
-      <span class="badge b-org">Source &amp; TF2 Community Analytical Standard</span>
-      <span class="badge b-cyn">Author: ZZIFER • Pure Logic Rules Here</span>
-    </div>
-    <div class="logo">
-      <span style="color:#f8fafc">TCC</span>
-      <span style="color:#38bdf8">//</span>
-      <span style="color:#e07a2c">MANN CO.</span>
-    </div>
-    <p class="desc">
-      Independent Tactical Combat &amp; Scaling Standard for the Source / TF2 Community — and the Unified Ring Nexus connecting TF2 Fan-Verses with High-Scale Cosmology.
-    </p>
-    <div class="nav-row">
-      <button class="btn active" id="btn-core" onclick="loadCore()">01 // Core Protocols</button>
-      <button class="btn" id="btn-chars" onclick="loadChars()">02 // Source Character Roster</button>
-      <button class="btn" id="btn-world" onclick="loadWorld()">03 // TCC: The Source Cosmology</button>
-      <a class="btn btn-discord" href="btn-ds" href="https://discord.gg/DbYTz8g8JU" target="_blank" rel="noopener">04 // Discord HQ</a>
-      <a class="btn btn-yt" href="https://www.youtube.com/channel/UCgWFNmYZIGb4mj6OdIAl5-Q" target="_blank" rel="noopener">05 // YouTube</a>
-      <a class="btn btn-steam" href="https://steamcommunity.com/id/ZZIFER/" target="_blank" rel="noopener">06 // Steam</a>
+    <div class="nav-container">
+      <a href="#" class="brand" onclick="switchTab('cosmology'); return false;">
+        <span class="brand-mark">TCC</span>
+        <span class="brand-title">TCC</span>
+      </a>
+
+      <!-- Switcher for 2 Sections -->
+      <div class="switcher" role="tablist" aria-label="TCC Sections">
+        <button class="switch-btn active" id="btn-cosmology" onclick="switchTab('cosmology')">Cosmology</button>
+        <button class="switch-btn" id="btn-scaling" onclick="switchTab('scaling')">Scaling</button>
+      </div>
+
+      <!-- YouTube & GitHub Links -->
+      <div class="nav-links">
+        <a class="ext-link yt" href="https://youtube.com" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a class="ext-link" href="https://github.com" target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </div>
     </div>
   </header>
 
-  <div class="wrap">
-    <aside>
-      <h3 id="nav-title">// Terminal Navigation</h3>
-      <div id="nav-list"></div>
-    </aside>
-    <main id="viewer"></main>
-  </div>
-     <script>
-    const viewer = document.getElementById('viewer');
-    const navList = document.getElementById('nav-list');
-    const navTitle = document.getElementById('nav-title');
-    const CHAR_FILES = ['saxton-hale.md'];
-    document.getElementById('btn-ds').href = 'https://discord.gg' + 'J6TxrwmybW';
+  <main>
 
-    function setTab(id) {
-      ['btn-core', 'btn-chars', 'btn-world'].forEach(b => document.getElementById(b).classList.toggle('active', b === id));
-    }
-
-    function parseMd(text) {
-      let html = '', inList = false;
-      const fmt = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-        .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>')
-        .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
-      for (const raw of text.split(/\r?\n/)) {
-        const l = raw.trim();
-        if (!l) { if (inList) { html += '</ul>'; inList = false; } continue; }
-        if (l.startsWith('# ')) { if (inList) { html += '</ul>'; inList = false; } html += '<h1>' + fmt(l.slice(2)) + '</h1>'; }
-        else if (l.startsWith('## ')) { if (inList) { html += '</ul>'; inList = false; } html += '<h2>' + fmt(l.slice(3)) + '</h2>'; }
-        else if (l.startsWith('### ')) { if (inList) { html += '</ul>'; inList = false; } html += '<h3>' + fmt(l.slice(4)) + '</h3>'; }
-        else if (l.startsWith('- ') || l.startsWith('* ') || l.startsWith('• ')) {
-          if (!inList) { html += '<ul>'; inList = true; }
-          html += '<li>' + fmt(l.slice(2)) + '</li>';
-        } else {
-          if (inList) { html += '</ul>'; inList = false; }
-          html += '<p>' + fmt(l) + '</p>';
-        }
-      }
-      if (inList) html += '</ul>';
-      return html;
-    }
-
-    async function loadCore() {
-      setTab('btn-core');
-      navTitle.textContent = '// Protocol Index';
-      viewer.innerHTML = '<p style="color:#f59e0b">Loading...</p>';
-      try {
-        const res = await fetch('./dossiers/part-01-core-and-mechanics.md?v=' + Date.now());
-        if (!res.ok) throw new Error(res.status);
-        viewer.innerHTML = parseMd(await res.text());
-        navList.innerHTML = '';
-        viewer.querySelectorAll('h1').forEach((h, i) => {
-          h.id = 'sec-' + i;
-          const a = document.createElement('a');
-          a.href = '#sec-' + i;
-          a.textContent = h.textContent.replace('TCC Standard Dossier: ', '').replace('TCC Standard Protocol: ', '');
-          navList.appendChild(a);
-        });
-      } catch (e) { viewer.innerHTML = '<p style="color:#f87171">Error: ' + e.message + '</p>'; }
-    }
-
-    async function openChar(file, link) {
-      navList.querySelectorAll('a').forEach(a => a.classList.remove('act'));
-      if (link) link.classList.add('act');
-      viewer.innerHTML = '<p style="color:#f59e0b">Loading...</p>';
-      try {
-        const res = await fetch('./characters/' + file + '?v=' + Date.now());
-        if (!res.ok) throw new Error(res.status);
-        viewer.innerHTML = parseMd(await res.text());
-      } catch (e) { viewer.innerHTML = '<p style="color:#f87171">Error: ' + e.message + '</p>'; }
-    }
-
-    function loadChars() {
-      setTab('btn-chars');
-      navTitle.textContent = '// Characters Roster';
-      navList.innerHTML = '';
-      CHAR_FILES.forEach((file, idx) => {
-        const a = document.createElement('a');
-        a.textContent = '// ' + file.replace('.md', '').replace(/-/g, ' ').toUpperCase();
-        a.onclick = () => openChar(file, a);
-        navList.appendChild(a);
-        if (idx === 0) openChar(file, a);
-      });
-    }
-
-    async function loadWorld() {
-      setTab('btn-world');
-      navTitle.textContent = '// Source Cosmology';
-      viewer.innerHTML = '<p style="color:#f59e0b">Loading...</p>';
-      try {
-        const res = await fetch('./world/' + encodeURIComponent('TCC: The Source Cosmology') + '?v=' + Date.now());
-        if (!res.ok) throw new Error(res.status);
-        viewer.innerHTML = parseMd(await res.text());
-        navList.innerHTML = '';
-        viewer.querySelectorAll('h1, h2').forEach((h, i) => {
-          h.id = 'world-' + i;
-          const a = document.createElement('a');
-          a.href = '#world-' + i;
-          a.textContent = h.textContent;
-          navList.appendChild(a);
-        });
-      } catch (e) { viewer.innerHTML = '<p style="color:#f87171">Error: ' + e.message + '</p>'; }
-    }
-
-    loadCore();
-  </script>
-</body>
-</html>
