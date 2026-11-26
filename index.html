@@ -4,10 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TCC™ — The Circular Canon</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <script src="https://jsdelivr.net"></script>
   <style>
     :root {
       --bg: #050505;
@@ -17,17 +13,14 @@
       --muted: #828c8c;
       --cyan: #2de2e6;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       line-height: 1.7;
       min-height: 100vh;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -39,16 +32,13 @@
       pointer-events: none;
       z-index: 0;
     }
-
     header {
       position: sticky;
       top: 0;
       z-index: 10;
       background: rgba(5, 5, 5, 0.94);
-      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
-
     .nav {
       max-width: 980px;
       margin: 0 auto;
@@ -59,61 +49,51 @@
       gap: 14px;
       flex-wrap: wrap;
     }
-
     .logo {
-      font-family: 'Anton', Impact, sans-serif;
+      font-family: Impact, 'Arial Narrow', sans-serif;
       font-size: 2rem;
       letter-spacing: 0.04em;
       color: var(--text);
       text-decoration: none;
       line-height: 1;
     }
-
     .logo span {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: monospace;
       font-size: 0.72rem;
       color: var(--cyan);
       vertical-align: super;
       margin-left: 2px;
     }
-
     .tabs {
       display: flex;
       border: 1px solid var(--border);
       background: var(--surface);
     }
-
     .tab {
       background: transparent;
       border: none;
       color: var(--muted);
-      font-family: 'Anton', Impact, sans-serif;
+      font-family: Impact, 'Arial Narrow', sans-serif;
       font-size: 1rem;
       letter-spacing: 0.08em;
       padding: 9px 22px;
       cursor: pointer;
       text-transform: uppercase;
-      transition: 0.15s;
     }
-
     .tab:first-child { border-right: 1px solid var(--border); }
     .tab:hover { color: var(--text); }
     .tab.active { background: var(--text); color: #050505; }
-
     .yt {
       border: 1px solid var(--cyan);
       color: var(--cyan);
       text-decoration: none;
-      font-family: 'Anton', Impact, sans-serif;
+      font-family: Impact, 'Arial Narrow', sans-serif;
       font-size: 0.95rem;
       letter-spacing: 0.08em;
       padding: 8px 16px;
       text-transform: uppercase;
-      transition: 0.15s;
     }
-
     .yt:hover { background: var(--cyan); color: #050505; }
-
     main {
       max-width: 980px;
       margin: 0 auto;
@@ -121,29 +101,26 @@
       position: relative;
       z-index: 1;
     }
-
     .status {
       font-size: 0.8rem;
       color: var(--cyan);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
-
     .content h1, .content h2, .content h3 {
-      font-family: 'Anton', Impact, sans-serif;
+      font-family: Impact, 'Arial Narrow', sans-serif;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      margin: 1.6em 0 0.5em;
+      margin: 1.5em 0 0.5em;
       line-height: 1.1;
       color: var(--text);
     }
-
-    .content h1 { font-size: 2.6rem; border-left: 4px solid var(--cyan); padding-left: 14px; margin-top: 0; }
-    .content h2 { font-size: 1.75rem; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    .content h1 { font-size: 2.5rem; border-left: 4px solid var(--cyan); padding-left: 14px; margin-top: 0; }
+    .content h2 { font-size: 1.7rem; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
     .content h3 { font-size: 1.25rem; color: var(--cyan); }
     .content p { margin-bottom: 1em; color: #cfd6d6; font-size: 0.94rem; }
-    .content ul, .content ol { margin: 0 0 1.2em 1.4em; color: #cfd6d6; font-size: 0.94rem; }
+    .content ul { margin: 0 0 1.2em 1.4em; color: #cfd6d6; font-size: 0.94rem; }
     .content li { margin-bottom: 0.45em; }
     .content strong { color: #fff; }
     .content blockquote {
@@ -153,9 +130,6 @@
       margin: 1.2em 0;
       color: var(--muted);
     }
-    .content table { width: 100%; border-collapse: collapse; margin: 1.4em 0; font-size: 0.88rem; }
-    .content th, .content td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; }
-    .content th { background: var(--surface); font-family: 'Anton', Impact, sans-serif; letter-spacing: 0.06em; font-weight: 400; }
     .content hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
   </style>
 </head>
@@ -163,14 +137,12 @@
 
   <header>
     <div class="nav">
-      <a href="#cosmology" class="logo" onclick="loadSection('cosmology')">TCC<span>TM</span></a>
-
+      <a href="#cosmology" class="logo" onclick="loadSection('cosmology'); return false;">TCC<span>TM</span></a>
       <div class="tabs">
         <button class="tab active" id="btn-cosmology" onclick="loadSection('cosmology')">Cosmology</button>
         <button class="tab" id="btn-scaling" onclick="loadSection('scaling')">Scaling</button>
       </div>
-
-      <a class="yt" href="https://www.youtube.com/@THECIRCULARCANON" target="_blank" rel="noopener">YouTube</a>
+      <a class="yt" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
     </div>
   </header>
 
@@ -181,9 +153,30 @@
 
   <script>
     const FILES = {
-      cosmology: 'cosmology/tcccosmology.md',
-      scaling: 'scaling/tcc.md'
+      cosmology: 'https://github.com/tcc-zzifer/TCC/tree/main/cosmology',
+      scaling: 'https://github.com/tcc-zzifer/TCC/blob/main/scaling/tcc.md'
     };
+
+    function renderMd(md) {
+      let html = md
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/^> (.*$)/gim, '<blockquote>$1</blockquote>')
+        .replace(/^---$/gim, '<hr>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/^\* (.*$)/gim, '<ul><li>$1</li></ul>')
+        .replace(/^- (.*$)/gim, '<ul><li>$1</li></ul>')
+        .replace(/<\/ul>\s*<ul>/g, '');
+      return html.split(/\n{2,}/).map(block => {
+        block = block.trim();
+        if (!block) return '';
+        if (/^<(h1|h2|h3|blockquote|hr|ul)/.test(block)) return block;
+        return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
+      }).join('\n');
+    }
 
     async function loadSection(section) {
       document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
@@ -196,19 +189,19 @@
       viewer.innerHTML = '';
 
       try {
-        const res = await fetch(FILES[section] + '?t=' + Date.now());
+        const res = await fetch(FILES[section] + '?v=' + Date.now());
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const text = (await res.text()).trim();
 
-        status.textContent = `// ARCHIVE: ${FILES[section].toUpperCase()}`;
+        status.textContent = `// ARCHIVE: ${FILES[section]}`;
         if (!text) {
           viewer.innerHTML = `<p style="color: var(--muted);">// FILE IS CURRENTLY EMPTY.</p>`;
           return;
         }
-        viewer.innerHTML = marked.parse(text);
+        viewer.innerHTML = renderMd(text);
       } catch (e) {
-        status.textContent = `// ERROR LOADING ${section.toUpperCase()}`;
-        viewer.innerHTML = `<p>Failed to fetch local repository file.</p>`;
+        status.textContent = `// ERROR (${e.message})`;
+        viewer.innerHTML = `<p>Path: ${FILES[section]}</p>`;
       }
     }
 
