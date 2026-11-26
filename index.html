@@ -170,7 +170,7 @@
         <button class="tab" id="btn-scaling" onclick="loadSection('scaling')">Scaling</button>
       </div>
 
-      <a class="yt" href="https://www.youtube.com/channel/UCgWFNmYZIGb4mj6OdIAl5-Q" target="_blank" rel="noopener">YouTube</a>
+      <a class="yt" href="https://www.youtube.com/@THECIRCULARCANON" target="_blank" rel="noopener">YouTube</a>
     </div>
   </header>
 
@@ -181,8 +181,8 @@
 
   <script>
     const FILES = {
-      cosmology: 'https://github.com/tcc-zzifer/TCC/blob/main/scaling/tcc',
-      scaling: 'https://github.com/tcc-zzifer/TCC/blob/main/cosmology/tcc'
+      cosmology: 'cosmology/tcc',
+      scaling: 'scaling/tcc'
     };
 
     async function loadSection(section) {
@@ -208,7 +208,7 @@
         viewer.innerHTML = marked.parse(text);
       } catch (e) {
         status.textContent = `// ERROR LOADING ${section.toUpperCase()}`;
-        viewer.innerHTML = `<p>Failed to fetch content from GitHub repository.</p>`;
+        viewer.innerHTML = `<p>Failed to fetch local repository file.</p>`;
       }
     }
 
