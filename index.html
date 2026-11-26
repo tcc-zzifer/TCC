@@ -3,407 +3,223 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TCC — Cosmology & Scaling</title>
+  <title>TCC™ — The Circular Canon</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://jsdelivr.net"></script>
   <style>
     :root {
-      --bg: #0b0c0e;
-      --surface: #121418;
-      --surface-hover: #181b20;
-      --border: #232730;
-      --text-primary: #eceef2;
-      --text-secondary: #9aa1ae;
-      --text-muted: #626976;
-      --accent: #e2e5ec;
-      --accent-subtle: rgba(226, 229, 236, 0.08);
-      --yt-accent: #d9383a;
+      --bg: #050505;
+      --surface: #0b0d0d;
+      --border: #1e2222;
+      --text: #ededed;
+      --muted: #828c8c;
+      --cyan: #2de2e6;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--bg);
-      color: var(--text-primary);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mono {
+      background: var(--bg);
+      color: var(--text);
       font-family: 'JetBrains Mono', monospace;
+      line-height: 1.7;
+      min-height: 100vh;
     }
 
-    /* Header & Top Navigation */
+    /* Фоновое кольцо логотипа TCC */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 50%; left: 50%;
+      width: 680px; height: 680px;
+      transform: translate(-50%, -50%);
+      border: 34px solid rgba(255, 255, 255, 0.02);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(11, 12, 14, 0.88);
-      backdrop-filter: blur(12px);
+      z-index: 10;
+      background: rgba(5, 5, 5, 0.94);
+      backdrop-filter: blur(8px);
       border-bottom: 1px solid var(--border);
     }
 
-    .nav-container {
-      max-width: 1040px;
+    .nav {
+      max-width: 980px;
       margin: 0 auto;
-      padding: 0.9rem 1.5rem;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+    .logo {
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
       text-decoration: none;
-      color: var(--text-primary);
+      line-height: 1;
     }
 
-    .brand-mark {
-      width: 28px;
-      height: 28px;
-      border: 1.5px solid var(--text-primary);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
+    .logo span {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.72rem;
+      color: var(--cyan);
+      vertical-align: super;
+      margin-left: 2px;
     }
 
-    .brand-title {
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      font-size: 1rem;
-    }
-
-    /* Section Switcher */
-    .switcher {
-      display: inline-flex;
-      background: var(--surface);
+    .tabs {
+      display: flex;
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 3px;
+      background: var(--surface);
     }
 
-    .switch-btn {
+    .tab {
       background: transparent;
       border: none;
-      color: var(--text-secondary);
-      font-family: 'Inter', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 500;
-      padding: 0.45rem 1.15rem;
-      border-radius: 6px;
+      color: var(--muted);
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      padding: 9px 22px;
       cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .switch-btn:hover {
-      color: var(--text-primary);
-    }
-
-    .switch-btn.active {
-      background: var(--accent);
-      color: #0b0c0e;
-      font-weight: 600;
-    }
-
-    /* External Links (YouTube + GitHub) */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-
-    .ext-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      text-decoration: none;
-      font-size: 0.825rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 0.45rem 0.85rem;
-      border-radius: 7px;
-      transition: all 0.2s ease;
-    }
-
-    .ext-link:hover {
-      border-color: var(--text-secondary);
-      color: var(--text-primary);
-      background: var(--surface-hover);
-    }
-
-    .ext-link.yt:hover {
-      border-color: var(--yt-accent);
-      color: #fff;
-    }
-
-    /* Main Container */
-    main {
-      max-width: 1040px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
-      flex: 1;
-    }
-
-    .hero {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2.25rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      display: block;
+      transition: 0.15s;
     }
 
-    .hero h1 {
-      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
+    .tab:first-child { border-right: 1px solid var(--border); }
+    .tab:hover { color: var(--text); }
+    .tab.active { background: var(--text); color: #050505; }
 
-    .hero p {
-      color: var(--text-secondary);
-      max-width: 740px;
-      font-size: 1.02rem;
-    }
-
-    /* Tab Views */
-    .view-section {
-      display: none;
-      animation: fadeIn 0.22s ease;
-    }
-
-    .view-section.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Cards & Grids */
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 1.25rem;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .repo-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      color: var(--text-secondary);
+    .yt {
+      border: 1px solid var(--cyan);
+      color: var(--cyan);
       text-decoration: none;
-      border-bottom: 1px dashed var(--border);
-      padding-bottom: 2px;
+      font-family: 'Anton', Impact, sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      padding: 8px 16px;
+      text-transform: uppercase;
+      transition: 0.15s;
     }
 
-    .repo-badge:hover {
-      color: var(--text-primary);
-      border-color: var(--text-primary);
+    .yt:hover { background: var(--cyan); color: #050505; }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      position: relative;
+      z-index: 1;
     }
 
-    .callout {
+    .status {
+      font-size: 0.8rem;
+      color: var(--cyan);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Оформление подгруженного текста из папок */
+    .content h1, .content h2, .content h3 {
+      font-family: 'Anton', Impact, sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 1.6em 0 0.5em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .content h1 { font-size: 2.6rem; border-left: 4px solid var(--cyan); padding-left: 14px; margin-top: 0; }
+    .content h2 { font-size: 1.75rem; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    .content h3 { font-size: 1.25rem; color: var(--cyan); }
+    .content p { margin-bottom: 1em; color: #cfd6d6; font-size: 0.94rem; }
+    .content ul, .content ol { margin: 0 0 1.2em 1.4em; color: #cfd6d6; font-size: 0.94rem; }
+    .content li { margin-bottom: 0.45em; }
+    .content strong { color: #fff; }
+    .content blockquote {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--accent);
-      border-radius: 8px;
-      padding: 1.35rem 1.5rem;
-      margin-bottom: 2rem;
-      color: var(--text-secondary);
-      font-size: 0.96rem;
+      border-left: 3px solid var(--cyan);
+      padding: 14px 18px;
+      margin: 1.2em 0;
+      color: var(--muted);
     }
-
-    .callout strong {
-      color: var(--text-primary);
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.15rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem;
-      transition: border-color 0.2s ease;
-    }
-
-    .card:hover {
-      border-color: #383e4c;
-    }
-
-    .card-code {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.45rem;
-      display: block;
-    }
-
-    .card h3 {
-      font-size: 1.08rem;
-      font-weight: 600;
-      margin-bottom: 0.6rem;
-      color: var(--text-primary);
-    }
-
-    .card p, .card li {
-      font-size: 0.93rem;
-      color: var(--text-secondary);
-    }
-
-    .card ul {
-      list-style: none;
-      margin-top: 0.65rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    .card li::before {
-      content: "— ";
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Scale Table */
-    .scale-block {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-
-    .scale-head {
-      padding: 1.1rem 1.4rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.015);
-    }
-
-    .scale-row {
-      display: grid;
-      grid-template-columns: 210px 1fr;
-      padding: 1rem 1.4rem;
-      border-bottom: 1px solid var(--border);
-      gap: 1rem;
-      align-items: baseline;
-    }
-
-    .scale-row:last-child {
-      border-bottom: none;
-    }
-
-    .scale-rank {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-
-    .scale-desc {
-      font-size: 0.94rem;
-      color: var(--text-secondary);
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    footer a {
-      color: var(--text-secondary);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--text-primary);
-    }
-
-    @media (max-width: 640px) {
-      .scale-row {
-        grid-template-columns: 1fr;
-        gap: 0.35rem;
-      }
-      .nav-container {
-        justify-content: center;
-      }
-    }
+    .content table { width: 100%; border-collapse: collapse; margin: 1.4em 0; font-size: 0.88rem; }
+    .content th, .content td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; }
+    .content th { background: var(--surface); font-family: 'Anton', Impact, sans-serif; letter-spacing: 0.06em; font-weight: 400; }
+    .content hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="nav-container">
-      <a href="#" class="brand" onclick="switchTab('cosmology'); return false;">
-        <span class="brand-mark">TCC</span>
-        <span class="brand-title">TCC</span>
-      </a>
+    <div class="nav">
+      <a href="#cosmology" class="logo" onclick="loadSection('cosmology')">TCC<span>TM</span></a>
 
-      <!-- Switcher for 2 Sections -->
-      <div class="switcher" role="tablist" aria-label="TCC Sections">
-        <button class="switch-btn active" id="btn-cosmology" onclick="switchTab('cosmology')">Cosmology</button>
-        <button class="switch-btn" id="btn-scaling" onclick="switchTab('scaling')">Scaling</button>
+      <div class="tabs">
+        <button class="tab active" id="btn-cosmology" onclick="loadSection('cosmology')">Cosmology</button>
+        <button class="tab" id="btn-scaling" onclick="loadSection('scaling')">Scaling</button>
       </div>
 
-      <!-- YouTube & GitHub Links -->
-      <div class="nav-links">
-        <a class="ext-link yt" href="https://youtube.com" target="_blank" rel="noopener">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTube
-        </a>
-        <a class="ext-link" href="https://github.com" target="_blank" rel="noopener">
-          GitHub
-        </a>
-      </div>
+      <a class="yt" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
     </div>
   </header>
 
   <main>
+    <div class="status" id="status">Loading...</div>
+    <article class="content" id="viewer"></article>
+  </main>
 
+  <script>
+    const REPO = 'tcc-zzifer/TCC';
+    const BRANCH = 'main';
+
+    async function loadSection(folder) {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.getElementById('btn-' + folder).classList.add('active');
+      history.replaceState(null, '', '#' + folder);
+
+      const status = document.getElementById('status');
+      const viewer = document.getElementById('viewer');
+      status.textContent = `// ARCHIVE: ${folder.toUpperCase()} — FETCHING...`;
+      viewer.innerHTML = '';
+
+      try {
+        // Получаем список файлов внутри папки cosmology или scaling
+        const res = await fetch(`https://github.com{REPO}/contents/${folder}?ref=${BRANCH}`);
+        const files = await res.json();
+        const target = Array.isArray(files) ? files.find(f => f.type === 'file') : null;
+
+        if (!target) {
+          status.textContent = `// ${folder.toUpperCase()} — NO FILE FOUND`;
+          return;
+        }
+
+        // Скачиваем сырой текст из файла и рендерим
+        const rawRes = await fetch(target.download_url);
+        const text = await rawRes.text();
+
+        status.textContent = `// ARCHIVE: ${folder.toUpperCase()} / ${target.name}`;
+        viewer.innerHTML = marked.parse(text);
+      } catch (e) {
+        status.textContent = `// ERROR LOADING ${folder.toUpperCase()}`;
+        viewer.innerHTML = `<p>Failed to fetch content from GitHub repository.</p>`;
+      }
+    }
+
+    const initial = location.hash.replace('#', '');
+    loadSection(initial === 'scaling' ? 'scaling' : 'cosmology');
+  </script>
+</body>
+</html>
