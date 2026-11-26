@@ -181,8 +181,8 @@
 
   <script>
     const FILES = {
-      cosmology: 'cosmology/tcc',
-      scaling: 'scaling/tcc'
+      cosmology: 'cosmology/tcccosmology.md',
+      scaling: 'scaling/tcc.md'
     };
 
     async function loadSection(section) {
@@ -200,7 +200,7 @@
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const text = (await res.text()).trim();
 
-        status.textContent = `// ARCHIVE: ${section.toUpperCase()} / TCC`;
+        status.textContent = `// ARCHIVE: ${FILES[section].toUpperCase()}`;
         if (!text) {
           viewer.innerHTML = `<p style="color: var(--muted);">// FILE IS CURRENTLY EMPTY.</p>`;
           return;
