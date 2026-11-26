@@ -137,10 +137,10 @@
 
   <header>
     <div class="nav">
-      <a href="#cosmology" class="logo" onclick="loadSection('cosmology'); return false;">TCC<span>TM</span></a>
+      <a href="#cosmology" class="logo" onclick="loadFile('cosmology/tcccosmology.md', 'btn-cosmology'); return false;">TCC<span>TM</span></a>
       <div class="tabs">
-        <button class="tab active" id="btn-cosmology" onclick="loadSection('cosmology')">Cosmology</button>
-        <button class="tab" id="btn-scaling" onclick="loadSection('scaling')">Scaling</button>
+        <button class="tab active" id="btn-cosmology" onclick="loadFile('cosmology/tcccosmology.md', 'btn-cosmology')">Cosmology</button>
+        <button class="tab" id="btn-scaling" onclick="loadFile('scaling/tcc.md', 'btn-scaling')">Scaling</button>
       </div>
       <a class="yt" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
     </div>
@@ -152,11 +152,6 @@
   </main>
 
   <script>
-    const FILES = {
-      cosmology: 'https://github.com/tcc-zzifer/TCC/tree/main/cosmology',
-      scaling: 'https://github.com/tcc-zzifer/TCC/blob/main/scaling/tcc.md'
-    };
-
     function renderMd(md) {
       let html = md
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -178,35 +173,29 @@
       }).join('\n');
     }
 
-    async function loadSection(section) {
+    async function loadFile(url, btnId) {
       document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
-      document.getElementById('btn-' + section).classList.add('active');
-      history.replaceState(null, '', '#' + section);
+      document.getElementById(btnId).classList.add('active');
 
       const status = document.getElementById('status');
       const viewer = document.getElementById('viewer');
-      status.textContent = `// ARCHIVE: ${section.toUpperCase()} — FETCHING...`;
+      status.textContent = `// LOADING: ${url}`;
       viewer.innerHTML = '';
 
       try {
-        const res = await fetch(FILES[section] + '?v=' + Date.now());
+        const res = await fetch(url);
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const text = (await res.text()).trim();
 
-        status.textContent = `// ARCHIVE: ${FILES[section]}`;
-        if (!text) {
-          viewer.innerHTML = `<p style="color: var(--muted);">// FILE IS CURRENTLY EMPTY.</p>`;
-          return;
-        }
-        viewer.innerHTML = renderMd(text);
+        status.textContent = `// ARCHIVE: ${url}`;
+        viewer.innerHTML = text ? renderMd(text) : '<p style="color: var(--muted);">// EMPTY FILE</p>';
       } catch (e) {
-        status.textContent = `// ERROR (${e.message})`;
-        viewer.innerHTML = `<p>Path: ${FILES[section]}</p>`;
+        status.textContent = `// ERROR: ${e.message}`;
+        viewer.innerHTML = `<p>Failed to load: ${url}</p>`;
       }
     }
 
-    const initial = location.hash.replace('#', '');
-    loadSection(initial === 'scaling' ? 'scaling' : 'cosmology');
+    loadFile('cosmology/tcccosmology.md', 'btn-cosmology');
   </script>
 </body>
 </html>
