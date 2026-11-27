@@ -125,14 +125,12 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
 * **Nature & Scope:** A creator whose authority and creative nature are confined within a single local world, isolated universe, pocket realm, or bounded sector of reality.
 * **Constraints:** Beyond its native domain or against higher cosmological layers, its creative supremacy ceases to apply. It remains bound by internal laws, finite reserves, emotional limits, or direct defeat by comparable forces, and actively interacts with its creation.
 
-### 16-B — Bound Demiurge
-*(Subdivided into two tiers based on the degree of attachment to creation)*
-
-* **16-B1 — Descending / Dependent Demiurge:**
-  * The creator of a vast, multi-layered cosmos (including higher dimensions) that retains direct ties to its creation.
-  * Possesses confirmed vulnerabilities (can be harmed, weakened, deceived, or disrupted), depends on the state, laws, or balance of the world, and descends into creation directly or through avatars.
-* **16-B2 — Non-Contacting Limited Demiurge:**
-  * A transitional tier just below the apex. It stands above the cosmic architecture and refrains from interfering in mortal affairs, yet fails one of the strict conditions of absolute autonomy—possessing a canonical vulnerability, leaving traceable anchors inside creation, or presiding over a small, flawed, or logically inconsistent world.
+#### 16-B — Bound Demiurge
+* **Nature & Scope:** The creator of a vast, multi-layered cosmos (including higher dimensions) that still falls short of absolute autonomy due to direct attachment, internal limits, or world constraints.
+* **Key Identifiers (Any of the following locks an entity into 16-B):**
+  * **Descent & Interference:** Steps down into creation directly or through avatars, communicates with inhabitants, or intervenes in mortal affairs.
+  * **Vulnerabilities & Dependence:** Possesses confirmed weaknesses (can be harmed, weakened, deceived, or disrupted) or depends on the state, laws, or balance of its creation.
+  * **Architectural Limits:** Leaves traceable anchors inside the world or presides over a small, flawed, or logically inconsistent cosmology.
 
 ### 16-C — Autonomous Demiurge / Creator-Observer (Absolute Ceiling)
 * **Nature & Scope:** The supreme, most coherent formulation of a creator within fiction. It rejects the self-contradictory label of *"Boundless"*—as anything written exists within the boundary of the work—yet within that boundary, its supremacy is total and unblemished.
