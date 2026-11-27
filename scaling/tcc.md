@@ -125,7 +125,7 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
 * **Nature & Scope:** A creator whose authority and creative nature are confined within a single local world, isolated universe, pocket realm, or bounded sector of reality.
 * **Constraints:** Beyond its native domain or against higher cosmological layers, its creative supremacy ceases to apply. It remains bound by internal laws, finite reserves, emotional limits, or direct defeat by comparable forces, and actively interacts with its creation.
 
-#### 16-B — Bound Demiurge
+### 16-B — Bound Demiurge
 *(Subdivided into two tiers based on the degree of attachment to creation)*
 
 * **16-B1 — Descending / Dependent Demiurge:**
@@ -134,7 +134,7 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
 * **16-B2 — Non-Contacting Limited Demiurge:**
   * A transitional tier just below the apex. It stands above the cosmic architecture and refrains from interfering in mortal affairs, yet fails one of the strict conditions of absolute autonomy—possessing a canonical vulnerability, leaving traceable anchors inside creation, or presiding over a small, flawed, or logically inconsistent world.
 
-#### 16-C — Autonomous Demiurge / Creator-Observer (Absolute Ceiling)
+### 16-C — Autonomous Demiurge / Creator-Observer (Absolute Ceiling)
 * **Nature & Scope:** The supreme, most coherent formulation of a creator within fiction. It rejects the self-contradictory label of *"Boundless"*—as anything written exists within the boundary of the work—yet within that boundary, its supremacy is total and unblemished.
 * **Five Mandatory Conditions of 16-C:**
   1. **Zero Vulnerabilities:** No actual or depicted weaknesses exist. It cannot be reached, weakened, deceived, or tied to any law, state, or event inside creation.
