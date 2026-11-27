@@ -142,3 +142,55 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
   3. **Absolute Non-Descent:** It never steps down into the world, deploys no avatars, leaves no traces, and issues no commandments.
   4. **Total Unawareness of Creation:** Inhabitants of the world lack the very senses, concepts, or mechanisms required to ever know or suspect its presence.
   5. **Architectural Perfection:** Supreme standing must be earned through the caliber of the design—the created cosmos must be vast, intricate, multi-layered, and free of logical rot.
+
+## TCC 4.0 Analytical Standard
+
+### 1. Visual Primacy (`Feat >>>>>> Statement`)
+* Only **visual media** (animation, film, scripted video game cutscenes, comics, manga) are valid for evaluation. Purely textual novels, audio narratives, and unillustrated lore entries are excluded.
+* **The Visual Frame is Absolute:** Character dialogue, narration, databooks, and external creator interviews carry zero analytical weight unless corroborated by completed on-screen execution.
+* **No Speculative Inflation:** Claims of "holding back" or unshown potential never grant higher scales; profiles are locked strictly to demonstrated ceilings.
+
+### 2. Ban on Pixel-Scaling & Reverse Energy Math
+* Measuring screen pixels and converting flashes, dust clouds, or shockwaves into joules or tons of TNT is **strictly prohibited**. Art serves composition, not engineering blueprints.
+* Destruction (`1–14 Scale`) is calibrated **literally by the structural object breached or displaced**, its physical material, density, and thickness—never by decorative visual effects or abstract room labels.
+* Collapsing a building by severing weak pillars or bypassing walls with acid/phasing reflects tactical precision or specialized mechanics, not baseline building-level striking force.
+
+### 3. The Law of Price, Stamina & Anatomy
+* Combatants are functional biological or mechanical systems, not infinite spreadsheets. Every action is bound by stamina limits, thermal strain, pain shock, and post-attack recovery (**The Law of Price**).
+* **No Monolithic Durability:** External armor does not protect internal organs from shockwaves, asphyxiation, toxins, radiation, or precision strikes to unarmored weak points (eyes, joints, sensors).
+* Regeneration is strictly bounded by energy/biomass reserves and critical structural anchor points (brain, heart, core).
+
+### 4. Supremacy of Battle Intelligence (BIQ) & Non-Linear Outcomes
+* Holding a higher `Scale` measures capacity, **never a guaranteed victory**. Outcomes depend on BIQ, starting range, terrain, execution errors under stress, and style compatibility.
+* **No `A > B > C` Chains:** Defeating a superior opponent via traps, weak points, or exhaustion does not grant the victor that opponent's physical scale.
+* Aim-dodging reflects BIQ and anticipation, not super-speed. Teleportation is spatial utility, not physical combat velocity.
+* Every evaluation must declare its mode upfront: **Equal Engagement** (unassisted baseline, no prep) or **Situational Engagement** (traps, prep time, specialized gear).
+
+### 5. Separation of Speed Vectors & Specialized Mechanics
+* Velocity is divided into three non-interchangeable metrics: **Combat Speed**, **Travel Velocity**, and **Reaction Speed**.
+* Specialized abilities (Hax, illusions, mind/soul manipulation, spatial warping) are bounded by demonstrated radius, activation latency, stamina cost, and target compatibility (e.g., mind attacks fail against soulless machines).
+* **No Artificial Verse Equalization:** Incompatible energy systems (stamina, radiation, spiritual energy, tech cores) are never merged into a single universal fuel.
+
+### 6. Segregation of Gags, Gameplay & Non-Canon
+* Comedic gags, parodies, and slapstick anomalies are isolated in a zero-evidence zone and **never override an entity's serious narrative baseline**.
+* Interactive games are evaluated **strictly through scripted story cutscenes**, never through UI health bars, respawns, or gameplay exploits.
+* Distinct visual adaptations (anime, comics, films, games) and chronological eras are evaluated separately—**zero artificial composites** and zero cross-scaling via background Easter eggs.
+
+### 7. Unfiltered Canon & Psychological Integrity
+* Canonical defeats, operational mistakes, aging, and permanent injuries are mandatory parts of an entity's profile and cannot be erased to protect an inflated rating.
+* Combatants retain their canonical personality, moral limiters, and arrogance. Protagonist plot armor is stripped away in neutral evaluations.
+* Identical evidentiary standards apply symmetrically to every entity without exception.
+
+### 8. Digital Simulations & Subordinate Units
+* Manipulating code or deleting files inside a software sandbox applies **strictly within that host program** and holds zero equivalence to destroying physical matter (`13 Scale`). Outside the network, digital entities remain bound to physical hardware.
+* Summoned creatures, drones, and armies are evaluated separately from their commander; neutralizing the commander concludes the engagement.
+
+### 9. Validation of 13–15 Scale (Universes & Higher Dimensions)
+* Labels like "dimension," "realm," or "pocket universe" carry zero weight without visualized volume: a city-sized pocket realm is **6 Scale**, not **13 Scale**.
+* Observing a single universe from an external interface or pocket space does not grant multiversal standing (**14 Scale**).
+* **15 Scale (`High Dimensional`)** requires explicit structural proof of existing on or operating within a higher dimension (`3–7D`, `7–11D`, `11D+`), never poetic buzzwords.
+
+### 10. Abolition of "Boundless" & Out-of-Scale Author Boundary (Tier 16)
+* The self-contradictory label **"Boundless" is permanently banned**: anything defined within a catalog exists inside the boundary of fiction.
+* The absolute ceiling inside fiction is **The Demiurge Spectrum (`16-A` / `16-B1` / `16-B2` / `16-C`)**, where supreme **16-C** standing demands zero vulnerabilities, absolute non-descent, and a vast, logically coherent cosmology.
+* The real-world human author stands **strictly outside the scale** and is excluded from evaluation.
