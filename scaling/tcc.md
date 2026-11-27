@@ -118,7 +118,7 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
 * **15-Middle (7–11D)** — Middle higher dimensions: entities and structures operating within the 7D to 11D range.
 * **15-Higher (11D+)** — Upper higher dimensions: the 11D+ range, marking the final dimensional threshold prior to Demiurges (Tier 16).
 
-* ### 16 — The Demiurge Spectrum (Author's Ceiling of TCC)
+### 16 — The Demiurge Spectrum (Author's Ceiling of TCC)
 > **Structural Exception:** Demiurges are not subdivided into `Starting`, `Average`, `Large`, or `Extra-large`. Their standing is determined not by raw destructive output, but by **independence from creation, absence of vulnerabilities, non-descent into the world, and the architectural quality of the cosmos itself.**
 
 #### 16-A — Local Demiurge
