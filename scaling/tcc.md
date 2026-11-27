@@ -194,3 +194,10 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
 * The self-contradictory label **"Boundless" is permanently banned**: anything defined within a catalog exists inside the boundary of fiction.
 * The absolute ceiling inside fiction is **The Demiurge Spectrum (`16-A` / `16-B1` / `16-B2` / `16-C`)**, where supreme **16-C** standing demands zero vulnerabilities, absolute non-descent, and a vast, logically coherent cosmology.
 * The real-world human author stands **strictly outside the scale** and is excluded from evaluation.
+
+### 11. The Law of Price & Impact Classification
+* **Consequence of Action:** Every deployment of force carries a mandatory cost—ranging from stamina drain and structural recoil to psychological strain and moral consequences within the narrative.
+* **Three Tiers of Structural Impact:**
+  * **Fracture / Breach:** Piercing or cracking a target without destroying its overall structural mass.
+  * **Destruction:** Shattering or collapsing a target into debris.
+  * **Total Erasure:** Complete annihilation of matter or existence without remainder.
