@@ -132,11 +132,27 @@
       color: var(--muted);
     }
     .content hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
-    
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    footer span { color: var(--cyan); }
   </style>
 </head>
 <body>
-
   <header>
     <div class="nav">
       <a href="#cosmology" class="logo" onclick="loadFile('cosmology/tcccosmology.md', 'btn-cosmology'); return false;">TCC<span>TM</span></a>
@@ -147,14 +163,16 @@
       <a class="yt" href="https://www.youtube.com/@THECIRCULARCANON" target="_blank" rel="noopener">YouTube</a>
     </div>
   </header>
-
   <main>
     <div class="status" id="status">Loading...</div>
     <article class="content" id="viewer"></article>
   </main>
-
+  <footer>
+    <div><span>©</span> 2026 TCC™ — The Circular Canon. All rights reserved.</div>
+    <div>Original Universe &amp; Analytical Standard</div>
+  </footer>
   <script>
-        function renderMd(md) {
+    function renderMd(md) {
       let html = md
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         .replace(/^\s*#### (.*$)/gim, '<h4>$1</h4>')
@@ -174,21 +192,17 @@
         return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
       }).join('\n');
     }
-
     async function loadFile(url, btnId) {
       document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
       document.getElementById(btnId).classList.add('active');
-
       const status = document.getElementById('status');
       const viewer = document.getElementById('viewer');
       status.textContent = `// LOADING: ${url}`;
       viewer.innerHTML = '';
-
       try {
         const res = await fetch(`${url}?t=${Date.now()}`, { cache: 'no-store' });
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const text = (await res.text()).trim();
-
         status.textContent = `// ARCHIVE: ${url}`;
         viewer.innerHTML = text ? renderMd(text) : '<p style="color: var(--muted);">// EMPTY FILE</p>';
       } catch (e) {
@@ -196,7 +210,6 @@
         viewer.innerHTML = `<p>Failed to load: ${url}</p>`;
       }
     }
-
     loadFile('cosmology/tcccosmology.md', 'btn-cosmology');
   </script>
 </body>
