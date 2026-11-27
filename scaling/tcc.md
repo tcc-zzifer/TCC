@@ -34,3 +34,75 @@ Instead of relying on generic wiki templates, **TCC Scaling** divides power and 
 * **1-Average level** — Insects and small animals.
 * **1-Large level** — Weakened individuals, disabled persons, children, incapable individuals, cats, corgis, and similar small domestic animals.
 * **1-Extra-large level** — Wolves, wild boars, lynxes, and comparable predatory or heavy wildlife.
+
+### 2 Scale — Human Level
+* **2-Starting level** — Ordinary adult civilians without combat training, athletic conditioning, or real fight experience.
+* **2-Average level** — Physically fit adults, standard soldiers, street fighters, or individuals armed with basic melee or standard firearms.
+* **2-Large level** — Professional athletes, combat veterans, elite special forces operatives, and masters of close-quarters combat and tactical marksmanship within real human anatomy.
+* **2-Extra-large level** — The absolute peak of real human biology (maximum strength, endurance, reaction speed, and high BIQ without supernatural traits) paired with light weaponry.
+
+### 3 Scale — Superhuman & Tactical Level
+* **3-Starting level** — Initial breach beyond human anatomy: shattering wood, brick, and thin metal, and surviving impacts lethal to ordinary humans.
+* **3-Average level** — Destroying load-bearing walls, concrete slabs, and bending thick steel; equivalent to heavy-caliber firearms and fragmentation grenades.
+* **3-Large level** — Demolishing structural supports, fortified rooms, and light armored vehicles; equivalent to heavy infantry ordnance (RPGs, autocannons).
+* **3-Extra-large level** — Instant obliteration of large fortified interiors, tank armor, and heavy barriers without yet reaching full-building scale.
+
+### 4 Scale — Building & Complex Scale
+* **4-Starting level** — Complete destruction or collapse of small structures: houses, bunkers, hangars, and isolated outposts.
+* **4-Average level** — Destruction of standard multi-story residential buildings, administrative blocks, and industrial halls.
+* **4-Large level** — Demolition of massive high-rises, skyscrapers, and major military bases.
+* **4-Extra-large level** — Total annihilation of gigantic multi-level complexes and heavy fortification hubs in a single decisive act.
+
+### 5 Scale — District & Sector Scale
+* **5-Starting level** — Destruction of a single dense city block or a fortified defensive cluster of multiple buildings.
+* **5-Average level** — Leveling several consecutive city blocks or a large residential/industrial district.
+* **5-Large level** — Destruction of an entire urban sector or major industrial zone.
+* **5-Extra-large level** — Complete erasure of a small town or large military sector on the threshold of a full city.
+
+### 6 Scale — City & Terrain Scale
+* **6-Starting level** — Destruction of a full small city along with its entire infrastructure.
+* **6-Average level** — Destruction of a major city or large urban agglomeration.
+* **6-Large level** — Leveling gigantic metropolises and deep multi-tiered subterranean cities.
+* **6-Extra-large level** — Shattering or displacing entire mountain ranges, ridges, and major geological formations.
+
+### 7 Scale — Island & Nation Scale
+* **7-Starting level** — Destruction or splitting of a large island.
+* **7-Average level** — Scale of an archipelago or the territory of a small nation.
+* **7-Large level** — Destruction of the territory of a full medium-sized country.
+* **7-Extra-large level** — Destruction of vast territories comparable to the largest sovereign powers.
+
+### 8 Scale — Continental Scale
+* **8-Starting level** — Critical devastation of a major region or subcontinent.
+* **8-Average level** — Complete destruction or displacement of an entire continent.
+* **8-Large level** — Simultaneous destruction of multiple continents.
+* **8-Extra-large level** — Total scorching of a planet's entire surface, biosphere, and crust without shattering its gravitational core.
+
+### 9 Scale — Planetary Scale
+* **9-Starting level** — Destruction of large asteroids, moons, and dwarf planets.
+* **9-Average level** — Complete destruction of a standard Earth-like planet, overcoming its gravitational binding integrity.
+* **9-Large level** — Destruction of super-Earths and ice giants.
+* **9-Extra-large level** — Destruction of gas giants on the scale of Jupiter up to the threshold of stellar ignition.
+
+### 10 Scale — Stellar Scale
+* **10-Starting level** — Destruction of brown, red, and white dwarfs.
+* **10-Average level** — Complete destruction of full main-sequence stars of solar type.
+* **10-Large level** — Destruction of massive stars and blue/red giants.
+* **10-Extra-large level** — Destruction of supergiants and hypergiants at the upper limit of stellar mass.
+
+### 11 Scale — Solar System Scale
+* **11-Starting level** — Destruction of a star along with its inner planetary orbits.
+* **11-Average level** — Complete destruction of a local star system with all its planets and belts within a unified radius.
+* **11-Large level** — Scale of extended binary and multiple-star systems.
+* **11-Extra-large level** — Simultaneous destruction of dozens or hundreds of neighboring star systems (interstellar sector).
+
+### 12 Scale — Galactic Scale
+* **12-Starting level** — Destruction of dense star clusters and dwarf galaxies.
+* **12-Average level** — Complete destruction or creation of a full spiral galaxy on the scale of the Milky Way.
+* **12-Large level** — Destruction of giant elliptical galaxies and local galaxy groups.
+* **12-Extra-large level** — Destruction of galaxy superclusters and large-scale cosmic filaments up to the boundaries of observable matter.
+
+### 13 Scale — Universal Scale
+* **13-Starting level** — Destruction of all observable matter within a universe without affecting its underlying space and time.
+* **13-Average level** — Complete destruction or creation of a single closed universe (3D space together with its linear timeline).
+* **13-Large level** — Destruction of a large composite universe encompassing attached pocket dimensions or internal sub-layers within a single timeline.
+* **13-Extra-large level** — Complete erasure of an entire universal continuum with all its internal realms on the threshold of multiple independent universes.
